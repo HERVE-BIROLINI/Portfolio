@@ -3,9 +3,7 @@
     //
     // if(isset($_SESSION['user_id'])){header('location:../../index.php');}
     //
-    require_once __DIR__."/../../Config/global.php";
-    require_once CO_PATH_INCLUDES.'header.php';
-    require_once CO_PATH_INCLUDES.'nav.php';
+    require_once __DIR__;
 
     //
     if(isset($_POST['email'])){

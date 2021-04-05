@@ -1,6 +1,9 @@
 
 <?php
-    session_start();
+    // session_start();
+// echo'APRES session_start, $_SESSION = ';
+// print_r($_SESSION);
+    ini_set("display_errors", 1);
     // JSON.parse() converti de l'objet au format JSON en ARRAY
 
     // Mes constantes :

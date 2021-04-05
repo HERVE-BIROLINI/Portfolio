@@ -38,7 +38,7 @@
 	<!-- Police de caractères -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital@1&family=Roboto:wght@100&display=swap" rel="stylesheet">
 
-<link rel="icon" type="image/png" href="<?=CO_HTTP_SRC.'Portrait-mini.JPG';?>"/>
+<link rel="icon" type="image/png" href="<?=CO_HTTP_SRC.'portrait-mini.jpg';?>"/>
 </head>
 <body>
 	<style type="text/css">

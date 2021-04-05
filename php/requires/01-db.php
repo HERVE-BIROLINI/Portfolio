@@ -8,11 +8,16 @@ use PDO;
 
 class DBTools{
     //
-    protected string $sDB_NAME='portfolio';
+    protected $sDB_NAME='portfolio';
     private $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
-    private string $sUser='root';
-    private string $sPwd='root';
+    private $sUser='root';
+    private $sPwd='root';
     private PDO $obPDO;
+    // protected string $sDB_NAME='portfolio';
+    // private $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
+    // private string $sUser='root';
+    // private string $sPwd='root';
+    // private PDO $obPDO;
     //
     private array $arClass4Field=['picture_name'=>  ['file',''],
                                     'language'  =>  ['select'=>['*','HTML','CSS','Javascript','PHP']]

@@ -5,7 +5,7 @@
 		<!-- -->
 		<style type="text/css">
 			.DivMyAccueilRow{
-			background-image:url(<?=CO_HTTP_SRC.'BckGrd_Portfolio_Birolini_Herve.png';?>);
+			background-image:url(<?=CO_HTTP_SRC.'bckgrd_portfolio_birolini_herve.png';?>);
 			/**/
 			background-repeat: no-repeat;
 			background-size: cover;

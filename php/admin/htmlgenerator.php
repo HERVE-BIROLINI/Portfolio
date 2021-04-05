@@ -10,7 +10,11 @@ class htmlGenerator{
         $sType=gettype($vArgument);
         if($sType=='array'){
             if(count($vArgument)==1)
-            {$sClass=array_key_first($vArgument);}
+            {
+                foreach($vArgument as $vKey => $vValue){$sClass=$vKey;}
+                // !!! array_key_first() n'existe pas sur le serveur Webhost !!!
+                // $sClass=array_key_first($vArgument);
+            }
             else{$sClass=$vArgument[0];}
             //
             if(gettype($sClass)=='string'){

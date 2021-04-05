@@ -4,7 +4,8 @@
 
 	/**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
 	/** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
-	require_once __DIR__."/../Requires/00-PHP_Init.php";
+	require_once __DIR__."/../requires/00-php_init.php";
+	// require_once __DIR__."/../Requires/00-PHP_Init.php";
 	//
 	foreach(funDirFiles(CO_PATH_REQUIRES_TOP,'') as $sFile){
 		if(ctype_digit(substr($sFile,0,2))){
@@ -12,6 +13,8 @@
 		}
 	}
     
+    $_SESSION['email']='guest';
+    $_SESSION['admin']='0';
     // Si poursuite du programme...
     // ... définie les variables en rapport avec la table à lire
     $sTable='wf3';
@@ -31,14 +34,16 @@
 
 <style type="text/css">
     .DivProductView{
-        padding-top: 25px;
-        width:95vw;
-        height:82vh;
         background:#cecece;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        width:95vw;
+        height:80vh;
+        border-radius:10px;
         /**/
         position:fixed;
         left:2.5vw;
-        bottom:7vh;
+        bottom:11vh;
         /**/
         filter: drop-shadow(0px 2px 5px black);
         /**/
@@ -127,23 +132,23 @@
             }
         });
         /**/
-        /* affichage : taille Desktop */
+        /* affichage : Nouvelle fenêtre d'explorateur */
         $('body').on('click','.fa-window-maximize',function(){
             window.open($('.ifProductView').attr('src'));
         });
         /**/
         /* retour vers la page index */
         $('body').on('click','.close',function(){
-            var sPathName=window.location.pathname;
-            sPathName=sPathName.split('/');
             //
-            sPathName=sPathName[1];
-            window.location.href='/'+sPathName+'/index.php?lang='+$sLang+'#MyFormation';
+            if(window.location.port.length==0)
+            {sPathName=window.location.protocol+'//'+window.location.hostname;}
+            else{sPathName=window.location.protocol+'//'+window.location.hostname+':'+window.location.port+'/portfolio';}
+            window.location.href=sPathName+'/?lang='+$sLang+'#MyFormation';
         });
     })
 </script>
 
-<div class="DivProductView"> <!-- style="visibility: hidden;"-->
+<div class="DivProductView">
     <div class="close">
         <i class="far fa-window-maximize"></i>
         <i class="fas fa-window-close"></i>
@@ -155,7 +160,6 @@
         <i class="fas fa-tablet-alt"></i>
         <i class="fas fa-laptop"></i>
         <i class="fas fa-desktop"></i>
-        <!-- <div class='DivSizingIFrame' id='2560px'><div class='DivSizingIFrame' id='1440px'><div class='DivSizingIFrame' id='768px'><div class='DivSizingIFrame' id='375px'><div class='DivSizingIFrame' id='320px'><p id='PSizeIFrame'></p></div></div></div></div></div></div></div> -->
     </div>
     <iframe class="ifProductView" title="Title"
         src="<?=$arItem['url']?>" style='width:425px;'>

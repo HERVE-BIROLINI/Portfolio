@@ -1,12 +1,13 @@
 <?php
     // session_start();
-
-    // Si est déjà connecté, renvoie à la page Index ()=> Read WF3)
-    if(isset($_SESSION['email'])){header('location:../admin/index.php');}
-    // if(isset($_SESSION['admin']) and $_SESSION['admin']==1){header('location:../admin/index.php');}
     //
-    require_once "../Requires/00-PHP_Init.php";
-    // funEcho(2,'- Entrée dans /Admin/Index.php...');
+	require_once __DIR__."/../requires/00-php_init.php";
+
+    $_SESSION['email']='guest';
+    $_SESSION['admin']='0';
+    // Si est déjà connecté, renvoie à la page Index ()=> Read WF3)
+    if(isset($_SESSION['email'])){header('Location: ../admin/index.php');}
+
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
     foreach($arFiles as $sFile){
         if(ctype_digit(substr($sFile,0,2))){
@@ -14,41 +15,41 @@
         }
     }
     if(isset($_POST['submit']) and $_POST['email']!=='' and $_POST['pwd']!==''){
-        $stRequest=$dbPDOConnect->prepare('select * from user where email=?');
-        $stRequest->execute([$_POST['email']]);
-        $arUsers=$stRequest->fetch(PDO::FETCH_ASSOC);
-        // $arUsers=$stRequest->fetchall(PDO::FETCH_ASSOC); // parce qu'une seule rangée me suffit
+
+        $obPDO=new Requires\DBTools();
+        $obPDO->init();
+        $arUsers=$obPDO->execSqlQuery('select * from user where email=?',[$_POST['email']]);
+        if(isset($arUsers)){$arUsers=$arUsers[0];}
         //
-// funEcho(2,'- $stRequest ressort '.$stRequest->rowcount().' ligne(s)...');
-// funEcho(2,'- $arUsers =');
-// var_dump($arUsers);
-        if($stRequest->rowcount()==0){
-            funEcho(-1,'</br></br>Connection impossible.</br>Votre eMail n\'est associé à aucun compte.');
+        if(!isset($arUsers) or count($arUsers)==0){
+            funEcho(-1,'<br><br>Connection impossible.</br>Votre eMail n\'est associé à aucun compte.');
         }
         elseif(password_verify($_POST['pwd'],$arUsers['password'])){
-            funEcho(-1,'Connecté !!');
+            funEcho(2,'<br><br>Vous êtes maintenant connecté.');
+if(!isset($_SESSION)){
+    funEcho(-1,'<br><br> MAIS POURQUOI LA SESSION N\'ETAIT PAS DEMARREE ????');
+    // session_start();
+}
             $_SESSION['admin']=$arUsers['admin'];
             $_SESSION['email']=$arUsers['email'];
             //
-            if($arUsers['admin']==1){
-                funEcho(1,'</br></br>Vous avez ouvert une session avec un compte administrateur...');
-            }
-            else{
-                funEcho(-1,'</br></br>Vous avez ouvert une session avec un compte utilisateur \'classique\'...');
-            }
+            if($arUsers['admin']==1){funEcho(1,'Vous avez ouvert une session avec un compte administrateur...');}
+            else{funEcho(-1,'Vous avez ouvert une session avec un compte utilisateur \'classique\'...');}
             //
-            header('location:'.CO_HTTP_ROOT.'index.php');
+        var_dump($_SESSION);
+        var_dump(headers_sent());
+            header('Location: '.CO_HTTP_ROOT.'?lang='.$sLang);
             // exit();
         }
         else{
-            funEcho(-1,'</br></br>Connection impossible.</br>Votre mot de passe est incorrect.');
+            funEcho(-1,'<br><br>Connection impossible.</br>Votre mot de passe est incorrect.');
         }
     }
     elseif(isset($_POST['submit']) and $_POST['email']==''){
-        funEcho(-1,'</br></br>Vous devez renseigner votre adresse eMail.');
+        funEcho(-1,'<br><br>Vous devez renseigner votre adresse eMail.');
     }
     elseif(isset($_POST['submit']) and $_POST['pwd']==''){
-        funEcho(-1,'</br></br>Vous devez indiquer votre mot de passe.');
+        funEcho(-1,'<br><br>Vous devez indiquer votre mot de passe.');
     }
 ?>
 

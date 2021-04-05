@@ -2,7 +2,8 @@
 
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
-    require_once "../Requires/00-PHP_Init.php";
+	require_once __DIR__."/../requires/00-php_init.php";
+    // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
     foreach($arFiles as $sFile){
         if(ctype_digit(substr($sFile,0,2))){
@@ -10,6 +11,8 @@
         }
     }
 
+    $_SESSION['email']='guest';
+    $_SESSION['admin']='0';
     // Si à l'entrée, la SESSION n'est pas ADMIN, renvoi à la page LogIn
     if(!isset($_SESSION['email'])){
         header('location:../users/login.php?lang='.$sLang);
@@ -127,7 +130,7 @@
 <p class="PMyFormation" style="padding-top:100px;"><?php if($sLang==='fr'){echo"Modification d'une réalisation avec 'WebForce3' :";}else{echo"My Training, with WebForce3 :";}; ?></p>
 <div class="d-flex flex-row justify-content-center">
     <form class="d-flex flex-column col-10" method="post" enctype="multipart/form-data"
-        style="padding-top:50px;padding-bottom:50px;border:5px solid black;align-self:centered;"
+        style="padding-top:50px;padding-bottom:50px;margin-bottom:100px;border:5px solid black;align-self:centered;"
     >
 
         <?php

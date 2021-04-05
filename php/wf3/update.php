@@ -1,8 +1,8 @@
 <?php
-
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
-    require_once "../Requires/00-PHP_Init.php";
+	require_once __DIR__."/../requires/00-php_init.php";
+    // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
     foreach($arFiles as $sFile){
         if(ctype_digit(substr($sFile,0,2))){
@@ -10,6 +10,8 @@
         }
     }
 
+    $_SESSION['email']='guest';
+    $_SESSION['admin']='0';
     // Si 1er passage, ENTREE sur le formulaire, mais pas d'ID à modifier...
     if(!isset($_GET['id'])){
         header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
@@ -32,12 +34,16 @@
     // Récupère la ligne de l'enregistrement à modifier
     else{$arRow=$arRow[0];}
 
-    // Si à l'entrée, la SESSION n'est pas ADMIN, ni 'propriétaire', renvoi à la page LogIn
-    if((isset($_SESSION['admin']) and $_SESSION['admin']!='1')
-        and (in_array('owner',$arFieldNames) and $_SESSION['email']!==$arRow['owner'])
+    // MAIS !! Si la SESSION n'est pas autorisée, (pas ADMIN, ni 'propriétaire'),
+    // renvoi à la page LogIn
+    if(!((isset($_SESSION['admin']) and $_SESSION['admin']=='1')
+            or (in_array('owner',$arFieldNames) and $_SESSION['email']==$arRow['owner'])
+        )
         ){
         header('location:../users/login.php?lang='.$sLang);
     }
+    // ce message ne devrait jamais être vu
+    elseif(!isset($_SESSION)){funEcho(-1,'<br><br>La session n\'est pas démarrée....');}
 
     //
     // Au 2nd passage, suite à SUBMIT...
@@ -165,7 +171,7 @@
 <p class="PMyFormation" style="padding-top:100px;"><?php if($sLang==='fr'){echo"Modification d'une réalisation avec 'WebForce3' :";}else{echo"My Training, with WebForce3 :";}; ?></p>
 <div class="d-flex flex-row justify-content-center">
     <form class="d-flex flex-column col-10" method="post" enctype="multipart/form-data"
-        style="padding-top:50px;padding-bottom:50px;border:5px solid black;align-self:centered;"
+        style="padding-top:50px;padding-bottom:50px;margin-bottom:100px;border:5px solid black;align-self:centered;"
     >
 
         <?php

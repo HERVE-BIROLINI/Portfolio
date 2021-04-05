@@ -140,7 +140,7 @@
             //
             foreach($arItems as $arItem){
         ?>
-        <div class="DivFormationIMG <?=$arItem['language']?>" style="background-image:url('<?=CO_HTTP_SRC_WF3.$arItem['picture_name']?>');">
+        <div class="DivFormationIMG <?=$arItem['language']?>" style="background-image:url('<?php echo strtolower(CO_HTTP_SRC_WF3.$arItem['picture_name']);?>');">
             <div class="DivTitle"><h5 class="title"><?=$arItem['title_'.$sLang]?></h5></div>
             <p class="PId" style="visibility:hidden;"><?=$arItem[$sTableWf3.'_id']?></p>
         </div>

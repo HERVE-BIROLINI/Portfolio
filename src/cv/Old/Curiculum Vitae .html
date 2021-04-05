@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<!-- 1ère méthode pour envoyer des instruction CSS :
+		Le référencement d'un fichier externe CSS
+	-->
+	<link rel="stylesheet" href="Curiculum Vitae.css" />
+	<!-- 2 ème méthode pour envoyer des instruction CSS :
+		Utiliser la balise HTML spécifique STYLE
+		ATTENTION !! pas de commentaire possible dans la balise STYLE
+	<style>
+		p,ul{color: orange;font-weight: bolder;}
+	</style>
+	-->
+	<title>Mon Curiculum Vitae</title>
+</head>
+<!-- AUTRES BALISES :
+  - La balise SPAN doit impérativement se retrouver encadrée dans une balise P,
+    alors qua la balise DIV peut se trouver n'importe où. Par contre DIV se comporte
+    comme P, et génère un espacement de ligne au-dessus et un saut de lign(BR/) à sa suite.
+    De plus, DIV "casse" la propagation du style CSS, comme UL..
+-->
+<body>
+	<div id="pHeader">
+		<a href="../_Sources_/Images-Icones/Portrait.JPG" target="_blank">
+			<figure>
+				<img src="../_Sources_/Images-Icones/Portrait-mini.JPG" tag="Ma photo"/>
+				<!-- ... -->
+			</figure>
+		</a>
+		<div class="pHeaderLeft">
+			Mr BIROLINI Hervé<br/>
+			4 avenue Clément ADER, Bât. 3<br/>
+			78190 TRAPPES<br/>
+			<span id="GrasObliqueRouge">
+				Tél: <a href="tel:0671100299" title="Me téléphoner" class="Contacts">06.71.10.02.99</a><br/>
+				Courriel: <a href="mailto:birolini.herve@gmail.com" title="M'envoyer un courriel" class="Contacts">birolini.herve@gmail.com</a>
+		    </span>
+		    <!-- en l'absence de la balise BR/ derrière la balise SPAN, les texte suivant poursuit sur la même ligne -->
+		    <br/><strong><i>"texte suivant"</strong></i>
+		</div>
+		<div class="pHeaderRight">
+			48 ans, né le 16 mai 1972, de nationalité française<br/>
+			Marié, 3 enfants<br/>
+			Titulaire des permis de conduire A, B, et C<br/>
+			Véhiculé
+			<input name="Vehicle"/>
+		</div>
+	</div>
+
+	<!-- POSTE RECHERCHE -->
+	<h1>
+		Développeur Web Full Stack<br/>
+		(en recherche de stage de fin de formation<br/>
+		du 10 mai au 2 juillet 2021 inclus)
+	</h1>
+
+
+	<!-- Grand paragraphe 1/3 : Mon expérience -->
+	<!-- 3 ème méthode pour envoyer des instruction CSS :
+		directement dans la balise HTML, les attributs ID et CLASS...
+	-->
+	<h2 id="Experience">Mon expérience</h2><!-- ID est unique, référencé par "#"... -->
+	<!-- ATTENTION !!
+		Les balises CLASS et ID référencées dans le fichier CSS,
+		ont le même usage, la différence est qu'il ne peut y avoir
+		qu'une seule balise ID pour un même nom, alors que l'on peut avoir
+		autant de balise CLASS pour un même nom.
+	-->
+	<section>
+		<span class=" TitleSub">Mai 2019 – Décembre 2019</span>
+		<p class="Experience"><!-- autant de CLASS identique que l'on veut, référencé par "."... -->
+			ARKANCE SYSTEMS - Guyancourt (78)<br/>
+			Société de services, en qualité de Pilote Opérationnel d’Application, détaché à la DSPTN d’EDF à Montrouge (94).
+		</p>
+		<span class=" TitleSub">Mai 2017 – Mai 2019</span>
+		<!-- 2nde instance de l'attribut' CLASS "Experience" -->
+		<p class="Experience">Divers missions d’intérim...</p>
+		<span class=" TitleSub">Février 2001 – Mai 2017</span>
+		<!-- 3ème instance de l'attribut CLASS "Experience" -->
+		<p class="Experience">
+			GEA (NIRO France) - Montigny-le-Bretonneux (78)<br/>
+			Société d’ingénierie dans les procédés d’évaporation.<br/>
+			En qualité de responsable des outils numériques du Bureau d’Etudes (logiciels CAO-DAO AutoDesk, et applicatifs développés par mes soins).<br/>
+			Création / Conception de modèles 3D Inventor.
+		</p>
+		<span class=" TitleSub">Mai 92 – Février 2001</span>
+		<!-- 4ème instance de l'attribut CLASS "Experience" (ou pSub) -->
+		<p class="pSub">
+			ARICAD - Montigny-le-Bretonneux (78)<br/>
+			Société de prestations en DAO en qualité de Formateur et de Développeur d’applications (surcouches) pour les logiciels AutoDesk.<br/>
+			(agrément AutoCAD 2000 obtenu le 16/04/99)<br/>
+			<ul>
+				<li>
+					EDF : Prestation sur site, intégration à l’équipe de développement d’un applicatif spécifique sur AutoCAD Map, correction de beugs remontés par les utilisateurs finaux par l’intermédiaire de fiches descriptives.
+				</li>
+				<li>
+					NIRO FRANCE : Prestation sur site pour la mise en place d'une application de création et gestion des documents AutoCAD et la formation sur AutoCAD.
+				</li>
+				<li>
+					Nortel Matra Cellular : Prestation sur site pour la mise en place d'une application de gestion du patrimoine.
+				</li>
+				<li>
+					SYTECH (Réseau Eurisys) : Prestation sur site pour étude de projet d'implantation d'usines RENAulT (Brésil et "Le Technocentre").
+				</li>
+				<li>
+					MAISONS PIERRE : Responsable du développement d'une application de génération de dossiers de permis de construire (3D).
+				</li>
+				<li>COGEMA La Hague : Schémas de câblage d'automates.</li>
+			</ul>
+		</p>	
+	</section>
+
+
+	<!-- Grand paragraphe 2/3 : Mes compétences -->
+	<h2 class="TitleH2">Mes compétences</h2>
+	<section>
+		<span class=" TitleSub">Langues</span>
+		<p class="pSub">Anglais (niv. Bon) / Portugais-brésilien (niv. Moyen)</p>
+		<span class=" TitleSub">Connaissances informatiques</span>
+		<p class="pSub">Systèmes d'exploitation :</p>
+		<ul>
+			<li>Dos</li>
+			<li>Windows depuis 3.11</li>
+		</ul>
+		<p class="pSub">Logiciels/Bibliothèques :</p>
+		<ul>
+			<li>Bootstrap</li>
+			<li>JQuery</li>
+			<li>CMS WordPress</li>
+			<li>Angular 2+</li>
+			<li>Symfony</li>
+		</ul>
+		<p class="pSub" id="pSubLang">Langages :</p>
+		<ul>
+			<li>HTML5</li>
+			<li>CSS3</li>
+			<li>Javascript</li>
+			<li>SQL</li>
+			<li>PHP</li>
+		</ul>
+		<p class="pSub">Techniques/Méthodes :</p>
+		<ul>
+			<li>UX Design</li>
+			<li>SEO</li>
+			<li>MVC</li>
+		</ul>
+	</section>
+
+
+	<!-- Grand paragraphe 3/3 : Ma formation -->
+	<h2 class="TitleH2">Ma formation</h2>
+	<section>
+		<span class=" TitleSub">2021 (en cours)</span>
+		<p class="pSub">Titre professionnel (RNCP Bac+2) Développeur intégrateur Web et Web Mobile</p>
+		<span class=" TitleSub">2016</span>
+		<p class="pSub">DAEU (équivalent Bac) en cours du soir</p>
+	</section>
+
+</body>
+</html>

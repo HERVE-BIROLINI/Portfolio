@@ -1,0 +1,131 @@
+
+/* ####### PRESENTATION DE L'AFFICHAGE ####### */
+/*
+- pour une police qui ne serait pas présente sur le poste,
+	d'abord la télécharger (fontsquirrel.com, choix + WEBFONTKIT), et la proposer
+- Définition d'une nouvelle police nommée CAC Champagne
+*/
+@font-face
+{
+	/*
+    font-family: 'droid_sansregular';
+    src: url('DroidSans-webfont.eot');
+    src: url('DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DroidSans-webfont.woff') format('woff'),
+         url('DroidSans-webfont.ttf') format('truetype'),
+         url('DroidSans-webfont.svg#droid_sansregular') format('svg');
+	*/
+	font-family: Arial;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- personnalisation de la présentation de la page HTML --- */
+* /* Concerne l'ensemble du fichier HTML lié */
+{
+	background-color: #C2C8CD;
+
+	/*border:1px solid black;*/
+    /*background-image: url('Exercices/Sous-Dossier/greyzz.png');*/
+
+    /* En l'absence de groupe @FONT-FACE */
+	/*font-family: 'great-vibes', Arial, Verdana, sans-serif, serif, "Blackadder ITC";*/
+}
+img
+{
+	width: 75px;
+    float: left;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+}
+p{padding: 10px;}
+/* Concerne tous les P et tous les UL */
+p,ul {font-size: 1em;}
+/* TOUS les H1, où qu'ils soient */
+h1
+{
+	font-size: 2.5em;
+	font-weight: bolder;/* PAS D'EFFET SUR LES TITRE Hx DEJA GRAS */
+	text-align: center;
+	text-shadow: 6px 6px 3px grey;
+
+	border: 3px black solid;/* attribut bordure: largeur couleur type;*/
+	border-radius: 18px / 9px;
+	box-shadow: 6px 6px 3px grey;/* attribut ombre: décalageH décalageV adoucissement couleur;*/
+
+	width: 50%;
+	margin: auto; /* NE FONCTIONNE QUE SI UNE LARGEUR EST FIXEE */
+	min-width: 750px;
+
+	border-spacing: 10px;
+	padding: 10px;
+	background-color: #666D73;/* SANS EFFET SI LE FOND DE LA PAGE EST UN FICHIER IMAGE */
+}
+/* TOUS les H2, où qu'ils soient */
+h2
+{
+	font-size: 2em;
+	background-color: #92989E;
+}
+#pHeader
+{
+/*border: 5px solid black;*/
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/*margin: auto;*/
+	margin-bottom: 20px;
+}
+.pHeaderLeft,.pHeaderRight
+{
+/*border: 3px solid black;*/
+	text-align: left;
+}
+/* instance de la balise ayant l'attribut ID="GrasObliqueRouge" dans l'HTML (unique) */
+#GrasObliqueRouge
+{
+	font-weight: bold; /* ?? SANS AUCUN EFFET ?? */
+	font-style: oblique;
+	color: red;
+}
+/* Titres (grands) des paragraphes principaux */
+#Experience,.TitleH2
+{
+	font-style: italic;
+	text-decoration: overline;/* OVERLINE ignoré SI UNDERLINE */
+	text-decoration: underline;
+	text-decoration-color: red;/* Ne fonctionne pas dans IE */
+}
+/* Titres des sous-paragraphes */
+.TitleSub
+{
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: underline;
+ 	text-decoration-style: wavy;
+}
+/* Sous-paragraphes */
+.Experience,.pSub
+{
+	font-style: italic;
+	text-align: justify; /* !! PAS TRES UTILE QUAND LES TEXTES SONT DANS DES BALISES DISTINCTES !! */
+}
+/* #pSubLang
+{
+	text-decoration: line-through;
+ 	text-decoration-style: wavy;
+} */
+/* ########################################### */
+
+
+
+/* ####### EVENEMENTS DE REACTION ####### */
+/* :hover ajoute un évènement réaction au passage de la souris sur l'élément */
+.Contacts:hover{color: green;}
+.Contacts:visited{color: orange;}/* Ne fonctionne pas dans edge */
+/**/
+input:focus{background-color: yellow;}/* SANS EFFET SI LE FOND DE LA PAGE EST UN FICHIER IMAGE */
+p:hover{border-left: 3px solid black;font-size: 1.2em;}
+.TitleSub:hover{border-left: 6px solid black;font-size: 1.5em;}
+ul:hover{border-left: 3px solid black;font-size: 1.2em;}
+/* ###################################### */
