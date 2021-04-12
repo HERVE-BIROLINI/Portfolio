@@ -3,7 +3,8 @@
     //
     // if(isset($_SESSION['user_id'])){header('location:../../index.php');}
     //
-    require_once __DIR__;
+	require_once "00-php_init.php";
+	//require_once __DIR__;
 
     //
     if(isset($_POST['email'])){
@@ -22,7 +23,7 @@
                 $arUsers=$stRequest->fetch(PDO::FETCH_ASSOC);
                 if($stRequest->rowcount()>0){
                     funEcho(2,'Merci de vous connecter');
-                    header('location:../../LogIn.php');
+                    // header('location:../../LogIn.php');
                 }
                 else{
                     funEcho(-1,'Erreur !...');

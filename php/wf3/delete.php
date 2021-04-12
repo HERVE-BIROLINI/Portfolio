@@ -1,7 +1,9 @@
 <?php
 
+session_start();
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
+	// require_once "00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
     // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
@@ -11,11 +13,12 @@
         }
     }
 
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+// $_SESSION['email']='guest';
+// $_SESSION['admin']='0';
     // Si 1er passage, ENTREE sur le formulaire, mais pas d'ID à modifier...
     if(!isset($_GET['id'])){
-        header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
+        header('location:'.__DIR__.'/../../index.php?lang='.$sLang);
+        // header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
     }
 
     // ... définie les variables en rapport avec la table à lire

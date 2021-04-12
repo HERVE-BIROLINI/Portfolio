@@ -1,24 +1,36 @@
 <?php
     // session_start();
     //
-	require_once __DIR__."/../requires/00-php_init.php";
-
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+	// require_once __DIR__."/../../00-php_init.php";
+	// require_once __DIR__."/../requires/00-php_init.php";
+// funEcho(-1," $_SERVER = ");
+// echo'<pre>';
+// var_dump($_SERVER);
+// echo'</pre>';
+// $_SESSION['email']='guest';
+// $_SESSION['admin']='0';
     // Si est déjà connecté, renvoie à la page Index ()=> Read WF3)
-    if(isset($_SESSION['email'])){header('Location: ../admin/index.php');}
+// funEcho(2,'<br><br><br> $_SESSION = ');
+// echo'<br><br>';
+// var_dump($_SESSION);
+    // if(isset($_SESSION['email'])){header('Location: '.__DIR__.'/../admin/index.php');}
 
-    $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
-    foreach($arFiles as $sFile){
-        if(ctype_digit(substr($sFile,0,2))){
-            require_once CO_PATH_REQUIRES_TOP.$sFile;
-        }
-    }
+//     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
+//     foreach($arFiles as $sFile){
+//         if(ctype_digit(substr($sFile,0,2))){
+//  // funEcho(2,'Chargement de '.$sFile.'..');
+//             require_once CO_PATH_REQUIRES_TOP.$sFile;
+//         }
+//     }
+// funEcho(2,'<br><br> $_POST = ');
+// echo'<br><br>';
+// var_dump($_POST);
     if(isset($_POST['submit']) and $_POST['email']!=='' and $_POST['pwd']!==''){
 
         $obPDO=new Requires\DBTools();
         $obPDO->init();
         $arUsers=$obPDO->execSqlQuery('select * from user where email=?',[$_POST['email']]);
+// funEcho(-1,'requête lancée...');
         if(isset($arUsers)){$arUsers=$arUsers[0];}
         //
         if(!isset($arUsers) or count($arUsers)==0){
@@ -26,19 +38,21 @@
         }
         elseif(password_verify($_POST['pwd'],$arUsers['password'])){
             funEcho(2,'<br><br>Vous êtes maintenant connecté.');
-if(!isset($_SESSION)){
-    funEcho(-1,'<br><br> MAIS POURQUOI LA SESSION N\'ETAIT PAS DEMARREE ????');
-    // session_start();
-}
+// if(!isset($_SESSION)){
+//     funEcho(-1,'<br><br> MAIS POURQUOI LA SESSION N\'ETAIT PAS DEMARREE ????');
+//     session_start();
+// }
+// session_start();
             $_SESSION['admin']=$arUsers['admin'];
             $_SESSION['email']=$arUsers['email'];
             //
             if($arUsers['admin']==1){funEcho(1,'Vous avez ouvert une session avec un compte administrateur...');}
             else{funEcho(-1,'Vous avez ouvert une session avec un compte utilisateur \'classique\'...');}
             //
-        var_dump($_SESSION);
-        var_dump(headers_sent());
-            header('Location: '.CO_HTTP_ROOT.'?lang='.$sLang);
+        // var_dump($_SESSION);
+        // var_dump(headers_sent());
+            header('Location: ../../?lang='.$sLang);
+            // header('Location: '.CO_HTTP_ROOT.'?lang='.$sLang);
             // exit();
         }
         else{

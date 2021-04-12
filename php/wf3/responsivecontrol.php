@@ -4,8 +4,8 @@
 
 	/**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
 	/** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
+	// require_once __DIR__."/../../00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
-	// require_once __DIR__."/../Requires/00-PHP_Init.php";
 	//
 	foreach(funDirFiles(CO_PATH_REQUIRES_TOP,'') as $sFile){
 		if(ctype_digit(substr($sFile,0,2))){
@@ -13,8 +13,8 @@
 		}
 	}
     
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+// $_SESSION['email']='guest';
+// $_SESSION['admin']='0';
     // Si poursuite du programme...
     // ... définie les variables en rapport avec la table à lire
     $sTable='wf3';

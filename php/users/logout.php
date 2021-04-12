@@ -1,6 +1,14 @@
 <?php
-	require_once __DIR__."/../requires/00-php_init.php";
+    session_start();
+	// require_once __DIR__."/../../00-php_init.php";
+	// require_once __DIR__."/../requires/00-php_init.php";
+// Echo'<br><br> CO_HTTP_ROOT = '.CO_HTTP_ROOT;
+    
+// session_destroy();
+    unset($_SESSION['email']);
+    unset($_SESSION['admin']);
 
-    session_destroy();
-    header('location:'.CO_HTTP_ROOT.'?lang='.$sLang);
+// Echo'<br><br> CO_HTTP_ROOT = '.CO_HTTP_ROOT;
+header('location: ../../?lang='.$sLang);
+// header('location:'.CO_HTTP_ROOT.'?lang='.$sLang);
 ?>

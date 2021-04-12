@@ -1,7 +1,9 @@
 <?php
 
+session_start();
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
+	// require_once __DIR__."/../../00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
     // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
@@ -10,9 +12,8 @@
             require_once CO_PATH_REQUIRES_TOP.$sFile;
         }
     }
-
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+// $_SESSION['email']='guest';
+// $_SESSION['admin']='0';
     // Si à l'entrée, la SESSION n'est pas ADMIN, renvoi à la page LogIn
     if(!isset($_SESSION['email'])){
         header('location:../users/login.php?lang='.$sLang);

@@ -1,6 +1,8 @@
 <?php
+    session_start();
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
+	// require_once __DIR__."/../../00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
     // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
@@ -10,11 +12,12 @@
         }
     }
 
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+// $_SESSION['email']='guest';
+// $_SESSION['admin']='0';
     // Si 1er passage, ENTREE sur le formulaire, mais pas d'ID à modifier...
     if(!isset($_GET['id'])){
-        header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
+        header('location:'.__DIR__.'/../admin/index.php?lang='.$sLang);
+        // header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
     }
 
     // Si poursuite du programme...
@@ -29,7 +32,8 @@
     // ... si pas d'enregistrement pour l'ID transmis, retour à la page précédente
     if(!isset($arRow) or count($arRow)==0){
         funEcho(-1,'Aucun enregistrement pour l\'ID "'.$_GET['id'].'" dans la table '.$sTable.'...');
-        header('location:'.$_SERVER['HTTP_REFERER']);
+        header('location:'.__DIR__.'/../admin/index.php?lang='.$sLang);
+        // header('location:'.$_SERVER['HTTP_REFERER']);
     }
     // Récupère la ligne de l'enregistrement à modifier
     else{$arRow=$arRow[0];}
@@ -140,7 +144,8 @@
             $sPrepare=substr($sPrepare,0,-1);
             //
             $obPDO->execSqlQuery('update '.$sTable.' set '.$sPrepare.' where '.$sPrimaryKey.'='.$_GET['id'],$arNewValues);
-            header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
+            header('location:'.__DIR__.'/../admin/index.php?lang='.$sLang);
+            // header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
         }
         
         // **** AFFICHE LE 'RAPPORT' ****

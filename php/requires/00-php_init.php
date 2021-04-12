@@ -1,7 +1,12 @@
-
 <?php
+    // Echo'<br><br><br><br> $_SESSION (dans php_init, AVANT session_start) = ';
+    // echo'<br>';
+    // var_dump($_SESSION);
     // session_start();
-// echo'APRES session_start, $_SESSION = ';
+// Echo'<br><br><br><br> $_SESSION (dans php_init, APRES session_start) = ';
+// echo'<br>';
+// var_dump($_SESSION);
+// echo'<br><br>APRES session_start, $_SESSION = ';
 // print_r($_SESSION);
     ini_set("display_errors", 1);
     // JSON.parse() converti de l'objet au format JSON en ARRAY
@@ -38,7 +43,9 @@
         defined('CO_DOCUMENT_ROOT') or define('CO_DOCUMENT_ROOT',$_SERVER['DOCUMENT_ROOT'].'/');
     }
     //
+    // defined('CO_HTTP_PHP') or define('CO_HTTP_PHP','php/');
     defined('CO_HTTP_PHP') or define('CO_HTTP_PHP',CO_HTTP_ROOT.'php/');
+    //
     defined('CO_PATH_PHP') or define('CO_PATH_PHP',CO_DOCUMENT_ROOT.'php/');
     //
     defined('CO_HTTP_REQUIRES_TOP') or define('CO_HTTP_REQUIRES_TOP',CO_HTTP_PHP.'requires/top/');
@@ -66,6 +73,7 @@
     defined('CO_HTTP_JS') or define('CO_HTTP_JS',CO_HTTP_ROOT.'js/');
     defined('CO_PATH_JS') or define('CO_PATH_JS',CO_DOCUMENT_ROOT.'js/');
     // Initialise les paramètres de connexion à la base de donnée
+    // require_once "php/requires/01-db.php";
     require_once "01-db.php";
     use Requires\DBTools;
     // $obPDO=new Requires\DBTools();
@@ -88,16 +96,19 @@
             if(isset($sMessage) and gettype($sMessage)=='string'){
                 switch($sTypeMsg){
                     case'warning':case'0':case 0:
-                        $sStyle='background-color:#fff3cd;width=100;';
+                        $sStyle='background-color:#fff3cd;width=100;margin-bottom:-4px;';
                     break;
                     case'danger':case'-1':case -1:
-                        $sStyle='background-color:#f8d7da;width=100;';
+                        $sStyle='background-color:#f8d7da;width=100;margin-bottom:-4px;';
                     break;
                     case'success':case'1':case 1:
-                        $sStyle='background-color:#d4edda;width=100;';
+                        $sStyle='background-color:#d4edda;width=100;margin-bottom:-4px;';
                     break;
-                    default:// 'info'
-                        $sStyle='background-color:#d1ecf1;width=100;';
+                    case'info':case'2':case 2:
+                        $sStyle='background-color:#d1ecf1;width=100;margin-bottom:-4px;';
+                    break;
+                    default:// pas de couleur de fond
+                        $sStyle="margin-bottom:-4px;";
                     break;
                 }
                 //
@@ -168,4 +179,8 @@
     }
     
     $bInitLoaded=true;
+// funEcho(2,'<br><br> $_SESSION (dans php_init) = ');
+// echo'<br>';
+// var_dump($_SESSION);
+// funEcho(2,'PHP_Init chargé...');
 ?>

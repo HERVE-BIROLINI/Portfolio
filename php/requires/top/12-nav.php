@@ -1,23 +1,26 @@
 
 <?php
-	if(isset($_GET['lang'])){$sLang=$_GET['lang'];}
+	if(isset($_GET['lang']))
+	{$sLang=$_GET['lang'];}
 	else{$sLang='fr';}
-    $_SESSION['email']='guest';
-    $_SESSION['admin']='0';
+// funEcho(2,'<br><br><br><br>CO_HTTP_USERS = ');
+// 	var_dump(CO_HTTP_USERS);
 ?>
 
 <!-- ***** 12-NAV.PHP : START ***** -->
 <!-- ***      ** HEADER **      *** -->
 
-<Header id="DivNav">
+<div id="DivNav">
 	<!-- Déclaration liaison avec une "feuille" de style : -->
-	<!-- <link rel="stylesheet" type="text/css" href="<?=CO_PATH_INCLUDES.'Header.css'?>"/> -->
 	<style type="text/css">
 		/* .nav-link{font-size:1.1em;color:red;} */
 		#DivNav{
 			width:100vw;
 			position:fixed;
-			/* top:0; */
+
+			/* bottom:25em; */
+			top:0;
+
 			z-index: 1;
 		}
 		/**/
@@ -42,7 +45,8 @@
 		.DivLang>p{
 			font-size: 0.65x;;
 			margin-top: 14px;
-			color:black;
+			color:white;
+			/* color:black; */
 		}
 		/**/
 		.DivImgFlag{
@@ -54,6 +58,18 @@
 			background-size: cover;
 			background-position: center center;
 		}
+		/**/
+		/* .DivH2Row{
+			justify-content:center;
+			text-align:center;
+		}
+		h2{
+			font-size:2.5em;
+			font-weight: bolder;
+			color:white;
+			text-shadow: 1px 1px 0.5em red, 2px 2px 0.01em grey, 5px 5px 0.1em black;
+			font-weight: bolder;
+		} */
 	</style>
 	<!-- -->
 	<script type="text/javascript">
@@ -66,9 +82,28 @@
 			//
 			funToggleEffect4Lang($sLang);
 		});
+		//
+		function funToggleEffect4Lang(sCurLang){
+			/* récupération du "niveau de lecture" sur la page */
+
+			/* changement d'affichage */
+			if(sCurLang.toUpperCase()==='FR'){
+				$('.DivLangFr').css(`box-shadow`,`inset 2px 2px 6px black`);
+				$('.DivLangFr>p').css({"font-size":"1.1em","font-weight":"bolder"});
+				$('.DivLangEn').css(`box-shadow`,`2px 2px 6px white`);
+			}
+			else//if(sCurLang.toUpperCase()==='en')
+			{
+				$('.DivLangEn').css(`box-shadow`,`inset 2px 2px 6px black`);
+				$('.DivLangEn>p').css({"font-size":"1.1em","font-weight":"bolder"});
+				$('.DivLangFr').css(`box-shadow`,`2px 2px 6px white`);
+			}
+			// alert('entre ici');
+		}
 	</script>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -80,34 +115,50 @@
 				</a>
 				<a id="NavProfile" class="nav-link" href=<?=CO_HTTP_ROOT.'?lang='.$sLang.'#MyProfile'?>><?php if($sLang==='fr'){echo'Mon profil';}else{echo'My profile';}; ?></a>
 				<a id="NavFormation" class="nav-link" href=<?=CO_HTTP_ROOT.'?lang='.$sLang.'#MyFormation'?>><?php if($sLang==='fr'){echo'Ma formation';}else{echo'My formation';}; ?></a>
-				<!-- <a id="NavContact" class="nav-link" href="#ContactMe"><?php if($sLang==='fr'){echo'Me contacter';}else{echo'Contact me';}; ?></a> -->
+				<!-- <a id="NavCV" class="nav-link" href="../CV/CV Hervé BIROLINI-Stagiaire Développeur WEB.html" target="_blank"><?php /*if($sLang==='fr'){echo'Mon Curriculum Vitae';}else{echo'My Curriculum Vitae';};*/ ?></a>
+				<a id="NavContact" class="nav-link" href="#ContactMe"><?php /*if($sLang==='fr'){echo'Me contacter';}else{echo'Contact me';};*/ ?></a> -->
 				<!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
 				<p>__</p>
 
-				<?php if(isset($_SESSION['email'])){ ?>
+				<?php 
+				
+				
+// funEcho(2,'<br><br> CO_HTTP_USERS = '.CO_HTTP_USERS);
+// echo'<br> - $_SESSION[\'email\'] = '.$_SESSION['email'];
+				// if(!isset($_SESSION['email'])){session_start();}
+				
+				if(isset($_SESSION['email'])){ ?>
 				<!-- <?php //if(isset($_SESSION['admin'])and $_SESSION['admin']=='1'){ ?> -->
 							<a id="NavAdmin" class="nav-link" href=<?=CO_HTTP_ADMIN.'?lang='.$sLang?>>Administration</a>
-							<!-- <a id="NavAdmin" class="nav-link" href=<?=CO_HTTP_ADMIN.'Index.php?lang='.$sLang?>>Administration</a> -->
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="<?=CO_HTTP_USERS.'logout.php?lang='.$sLang?>"><?php if($sLang==='fr'){echo'Se déconnecter';}else{echo'Log Out';}; ?>
-					</a>
-					</li> -->
+							<li class="nav-item">
+								<a class="nav-link" href="<?=CO_HTTP_USERS.'logout.php?lang='.$sLang?>"><?php if($sLang==='fr'){echo'Se déconnecter';}else{echo'Log Out';}; ?></a><!--  class="nav-link btn btn-secondary" style="background:#cecece;margin:2px;"-->
+							</li>
 							<!-- <p></p> -->
 							<!-- <span></span> -->
 							<!-- <li class="nav-item">
-								<a class="nav-link" href="<?=CO_HTTP_USERS.'Update.php?lang='.$sLang?>"><?php if($sLang==='fr'){echo'Modifier votre mot de passe';}else{echo'Change Password';}; ?></a>
+								<a class="nav-link" href="<?=CO_HTTP_USERS.'update.php?lang='.$sLang?>"><?php if($sLang==='fr'){echo'Modifier votre mot de passe';}else{echo'Change Password';}; ?></a>
 							</li> -->
         		<?php } else{ ?>
 					<li class="nav-item">
-						<a class="nav-link" href="<?=CO_HTTP_USERS.'login.php?lang='.$sLang?>"><?php if($sLang==='fr'){echo'Se connecter';}else{echo'Log In';}; ?></a>
+						<!-- <a class="nav-link" href="<?=CO_HTTP_ADMIN.'?lang='.$sLang?>"> -->
+						<!-- <a class="nav-link" href="<?=CO_HTTP_USERS.'login.php?lang='.$sLang?>">-->
+							<?php //if($sLang==='fr'){echo'Se connecter';}else{echo'Log In';}; ?>
+						<!-- </a> -->
 					</li>
 				<?php } ?>
 			</div>
 		</div>
 <?php
-	if(isset($_SESSION['admin'])){
-		echo'<p style="margin-bottom:-3px;">'.$_SESSION['email'].'</p>';
+	if(isset($_SESSION['email'])){
+		if(!isset($_GET['lang']) or (isset($_GET['lang']) and $_GET['lang']=='fr')){
+			funEcho(99,'<p>Bienvenue '.$_SESSION['email'].'</p>');
+		}
+		else{
+			funEcho(99,'<p>Welcome '.$_SESSION['email'].'</p>');
+		}
 	}
+	// if(isset($_GET)){
+	// }
 ?>
 		<div class="d-flex flex-row">
 			<a href=<?php
@@ -152,6 +203,6 @@
 		</div>
 
 	</nav>
-</Header>
+</div>
 
 <!-- ***** 12-NAV.PHP : END ***** -->

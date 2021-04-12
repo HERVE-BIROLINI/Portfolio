@@ -7,17 +7,18 @@ namespace Requires;
 use PDO;
 
 class DBTools{
+    // Le typage ici des variables génère des erreurs dans Webhost
+    // protected string $sDB_NAME='id16523549_portfolio';
+    // private string $stQuery="mysql:host=localhost;dbname=id16523549_portfolio";
+    // private string $sUser='id16523549_herve';
+    // private string $sPwd='Webhost@MdP2019';
     //
-    protected $sDB_NAME='portfolio';
-    private $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
-    private $sUser='root';
-    private $sPwd='root';
+    protected string $sDB_NAME='portfolio';
+    private string $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
+    private string $sUser='root';
+    private string $sPwd='root';
+    //
     private PDO $obPDO;
-    // protected string $sDB_NAME='portfolio';
-    // private $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
-    // private string $sUser='root';
-    // private string $sPwd='root';
-    // private PDO $obPDO;
     //
     private array $arClass4Field=['picture_name'=>  ['file',''],
                                     'language'  =>  ['select'=>['*','HTML','CSS','Javascript','PHP']]

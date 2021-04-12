@@ -42,24 +42,6 @@
 			return aVars;
 		}
 		//
-		function funToggleEffect4Lang(sCurLang){
-			/* récupération du "niveau de lecture" sur la page */
-
-			/* changement d'affichage */
-			if(sCurLang.toUpperCase()==='FR'){
-				$('.DivLangFr').css(`box-shadow`,`inset 2px 2px 6px black`);
-				$('.DivLangFr>p').css({"font-size":"1.1em","font-weight":"bolder"});
-				$('.DivLangEn').css(`box-shadow`,`2px 2px 6px black`);
-			}
-			else//if(sCurLang.toUpperCase()==='en')
-			{
-				$('.DivLangEn').css(`box-shadow`,`inset 2px 2px 6px black`);
-				$('.DivLangEn>p').css({"font-size":"1.1em","font-weight":"bolder"});
-				$('.DivLangFr').css(`box-shadow`,`2px 2px 6px black`);
-			}
-			// alert('entre ici');
-		}
-		//
 		function funNoClick(){
 			// alert('Clic droit interdit');
 			return(false);
