@@ -1,3 +1,4 @@
+<!-- ***** New.PHP (USERS) : START ***** -->
 <?php
     // session_start();
     //
@@ -59,4 +60,4 @@
 <?php
     require_once CO_PATH_INCLUDES.'footer.php';
 ?>
-
+<!-- ***** New.PHP (USERS) : START ***** -->

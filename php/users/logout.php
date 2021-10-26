@@ -1,3 +1,4 @@
+<!-- ***** LogOut.PHP (USERS) : START ***** -->
 <?php
     session_start();
 	// require_once __DIR__."/../../00-php_init.php";
@@ -12,3 +13,4 @@
 header('location: ../../?lang='.$sLang);
 // header('location:'.CO_HTTP_ROOT.'?lang='.$sLang);
 ?>
+<!-- ***** LogOut.PHP (USERS) : END ***** -->

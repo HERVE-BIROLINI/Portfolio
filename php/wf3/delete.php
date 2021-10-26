@@ -1,9 +1,10 @@
+<!-- ***** Delete.PHP (WF3) : START ***** -->
 <?php
 
-session_start();
+    session_start();
+    
     /**** LOADING OF 'PARTS' OF MAIN PHP PAGE ****/
     /** ... STRICLY REQUIRED PARTS (PHP codes mainly) **/
-	// require_once "00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
     // require_once "../Requires/00-PHP_Init.php";
     $arFiles=funDirFiles(CO_PATH_REQUIRES_TOP,'*');
@@ -12,28 +13,33 @@ session_start();
             require_once CO_PATH_REQUIRES_TOP.$sFile;
         }
     }
-
-// $_SESSION['email']='guest';
-// $_SESSION['admin']='0';
-    // Si 1er passage, ENTREE sur le formulaire, mais pas d'ID à modifier...
+    
+    // Si à l'entrée, la SESSION n'est pas ADMIN, renvoi à la page LogIn
+    if(!isset($_SESSION['email'])){
+        header('location:../users/login.php?lang='.$sLang);
+    }
+    
+    // Si poursuite du programme...
+    
+    // ... et 1er passage, ENTREE sur le formulaire, mais pas d'ID à modifier...
     if(!isset($_GET['id'])){
-        header('location:'.__DIR__.'/../../index.php?lang='.$sLang);
-        // header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
+        header('location:../admin/index.php?lang='.$sLang);
     }
 
     // ... définie les variables en rapport avec la table à lire
     $sTable='wf3';
     // ... récupère la liste des champs de la table à Editer
-    $obPDO=new Requires\DBTools();
+    $obPDO=new App\DBTools();
     $obPDO->init();
     $arFieldNames=$obPDO->funGetNameOfColumns($sTable);
     $arRow=$obPDO->execSqlQuery("select * from $sTable where ".$sTable."_id=?",[$_GET['id']]);
-    
 
     // MAIS !! Si la SESSION n'est pas autorisée, (pas ADMIN, ni 'propriétaire'),
     // renvoi à la page LogIn
     if(!((isset($_SESSION['admin']) and $_SESSION['admin']=='1')
-            or (in_array('owner',$arFieldNames) and $_SESSION['email']==$arRow['owner'])
+            or (in_array('owner',$arFieldNames) and
+                strtolower($_SESSION['email'])==strtolower($arRow['owner'])
+                )
         )
         ){
         header('location:../users/login.php?lang='.$sLang);
@@ -66,3 +72,4 @@ session_start();
     header('location:'.CO_HTTP_ADMIN.'index.php?lang='.$sLang);
     // exit();
 ?>
+<!-- ***** Delete.PHP (WF3) : END ***** -->

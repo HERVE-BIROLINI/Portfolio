@@ -1,5 +1,4 @@
-
-<!-- ***** 11-JS_JQUERY_BOOTSTRAP.PHP : START ***** -->
+<!-- ***** 96-JS_JQUERY_BOOTSTRAP.PHP : START ***** -->
 <?php
 	// $sLang=$_GET['lang']; !!!! DEJA INITILISEE EN REQUIRE !!!!
 	// echo"- arGET = $arGET";
@@ -21,6 +20,10 @@
 
 <!-- INCLUSION BOOTSTRAP : Getbootstrap.com / JQUERY (CDN=LIEN EN LIGNE)-->
 <!-- <script src="js/bootstrap.js"></script> -->
+
+	<script src="../../src/portfolio.js"async></script>
+	<!-- <script src="src/portfolio.js"async></script> -->
+	
 
 	<script type="text/javascript">
 	// BIZARRE, ON DIRAIT QUE NON !!!
@@ -55,6 +58,4 @@
 			document.contextmenu=funNoClick();
 		});
 	</script>
-
-<!-- ***** 11-JS_JQUERY_BOOTSTRAP.PHP : END ***** -->
-
+<!-- ***** 96-JS_JQUERY_BOOTSTRAP.PHP : END ***** -->

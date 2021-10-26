@@ -1,9 +1,10 @@
 <?php
-
+namespace App;
+// namespace Requires;
+?>
+<!-- ***** 01-DB.PHP (Class DBTools) : START ***** -->
+<?php
 // Echo'- Chargement (require) du fichier PHP d\'initialisation des outils de BdD ("01-DB.php")...';
-
-namespace Requires;
-
 use PDO;
 
 class DBTools{
@@ -19,31 +20,27 @@ class DBTools{
     private string $sPwd='root';
     //
     private PDO $obPDO;
-    //
-    private array $arClass4Field=['picture_name'=>  ['file',''],
-                                    'language'  =>  ['select'=>['*','HTML','CSS','Javascript','PHP']]
-                                ];
-    public string $sLanguagesFieldName='language';
 
 
+    /** Instancie un objet de la Class PDO pour les paramètres
+     *  de connexions donnés
+     *  @return	$obPDO	PDO	instance of PDO Statement
+    */
     public function init():PDO{
         return $this->obPDO=new PDO($this->stQuery,$this->sUser,$this->sPwd);
     }
-
-    public function getClass4Field(string $sKey =null){
-        if(isset($sKey) and isset($this->arClass4Field[$sKey]))
-        {return $this->arClass4Field[$sKey];}
-        elseif(!isset($sKey)){return $this->arClass4Field;}
-    }
-    public function getLanguages():array{
-        $arLanguages=$this->getClass4Field($this->sLanguagesFieldName);
-        return $arLanguages;
-    }
-
+    /** 
+     *  @return	$obPDO	PDO	instance of PDO Statement
+    */
     public function getPdo():PDO{
         return $this->obPDO;
     }
 
+
+    /** @param	$sQuery     STRING	SQL request
+     *  @param	$sTable     ARRAY	Array of Datas
+     *  @return	$arFields	ARRAY	containing founded fields
+    */
     public function execSqlQuery(string $sQuery,array $arDatas=null):array{
         $stQuery=$this->obPDO->prepare($sQuery);
         //
@@ -77,6 +74,26 @@ class DBTools{
         else{Echo'Pas d\'écriture dans la table '.$sTable.', ou elle n\'existe pas...';}
     }
 
+
+    // Utilisation en l'absence d'une Table Language dans la BdD...
+    //----------------------------------------------------------------
+    private array $arClass4Field=['picture_name'=> ['file',''],
+                                    'language'  => ['select'=>['*','HTML','CSS','Javascript','PHP','POO','Symfony']]
+                                ];
+    public string $sLanguagesFieldName='language';
+    //
+    public function getClass4Field(string $sKey =null){
+        if(isset($sKey) and isset($this->arClass4Field[$sKey]))
+        {return $this->arClass4Field[$sKey];}
+        elseif(!isset($sKey)){return $this->arClass4Field;}
+    }
+    public function getLanguages():array{
+        $arLanguages=$this->getClass4Field($this->sLanguagesFieldName);
+        return $arLanguages;
+    }
+    //----------------------------------------------------------------
+
 }
 
 ?>
+<!-- ***** 01-DB.PHP (Class DBTools) : END ***** -->

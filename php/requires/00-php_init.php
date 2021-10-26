@@ -1,3 +1,4 @@
+<!-- ***** 00-PHP_INIT.PHP : START ***** -->
 <?php
     // Echo'<br><br><br><br> $_SESSION (dans php_init, AVANT session_start) = ';
     // echo'<br>';
@@ -58,6 +59,8 @@
     //
     defined('CO_HTTP_ADMIN') or define('CO_HTTP_ADMIN',CO_HTTP_PHP.'admin/');
     defined('CO_PATH_ADMIN') or define('CO_PATH_ADMIN',CO_PATH_PHP.'admin/');
+    defined('CO_HTTP_LANGUAGE') or define('CO_HTTP_LANGUAGE',CO_HTTP_PHP.'language/');
+    defined('CO_PATH_LANGUAGE') or define('CO_PATH_LANGUAGE',CO_PATH_PHP.'language/');
     defined('CO_HTTP_LOGEMENTS') or define('CO_HTTP_LOGEMENTS',CO_HTTP_PHP.'logements/');
     defined('CO_PATH_LOGEMENTS') or define('CO_PATH_LOGEMENTS',CO_PATH_PHP.'logements/');
     defined('CO_HTTP_USERS') or define('CO_HTTP_USERS',CO_HTTP_PHP.'users/');
@@ -73,17 +76,22 @@
     defined('CO_HTTP_JS') or define('CO_HTTP_JS',CO_HTTP_ROOT.'js/');
     defined('CO_PATH_JS') or define('CO_PATH_JS',CO_DOCUMENT_ROOT.'js/');
     // Initialise les paramètres de connexion à la base de donnée
+
+    /* inutile si on n'utilise pas les NAMESPACE
+    // (avec Composer, et l'autoload norme PSR-4)
+    // use Requires\DBTools;
+    // |--> utiliser Require ou Include fonctionne : */ require_once "01-db.php";
     // require_once "php/requires/01-db.php";
-    require_once "01-db.php";
-    use Requires\DBTools;
+
     // $obPDO=new Requires\DBTools();
     // Mes variables :
     //****************/
-    // Définit la langue courante pour l'ensemble du document
+    // Définit la langue courante pour l'ensemble du document (par opérateur ternaire)
     $sLang=isset($_REQUEST['lang'])?$_REQUEST['lang']:'fr';
 
     // Mes fonctions :
     //****************/
+    // /!\ NE "CHARGE" LA FONCTION QUE SI ELLE N'EST PAS DEJA CHARGEE /!\
     /*  @param	$sTypeMsg	STRING or INT	Background color
      *      'info' or 2 (bleu ciel)     = #d1ecf1 / rgb(209, 236, 241) / hsl(189, 53%, 88%)
      *      'success' or 1 (vert pâle)  = #d4edda / rgb(212, 237, 218) / hsl(134, 41%, 88%)
@@ -96,23 +104,22 @@
             if(isset($sMessage) and gettype($sMessage)=='string'){
                 switch($sTypeMsg){
                     case'warning':case'0':case 0:
-                        $sStyle='background-color:#fff3cd;width=100;margin-bottom:-4px;';
+                        $sStyle='background-color:#fff3cd;';
                     break;
                     case'danger':case'-1':case -1:
-                        $sStyle='background-color:#f8d7da;width=100;margin-bottom:-4px;';
+                        $sStyle='background-color:#f8d7da;';
                     break;
                     case'success':case'1':case 1:
-                        $sStyle='background-color:#d4edda;width=100;margin-bottom:-4px;';
+                        $sStyle='background-color:#d4edda;';
                     break;
                     case'info':case'2':case 2:
-                        $sStyle='background-color:#d1ecf1;width=100;margin-bottom:-4px;';
+                        $sStyle='background-color:#d1ecf1;';
                     break;
                     default:// pas de couleur de fond
-                        $sStyle="margin-bottom:-4px;";
                     break;
                 }
                 //
-                echo'<div style="'.$sStyle.'padding:10px;">'.$sMessage.'</div>';
+                echo'<div class="alert px-5" style="'.$sStyle.'padding:10px;">'.$sMessage.'</div>';
             }
         }
     }
@@ -184,3 +191,4 @@
 // var_dump($_SESSION);
 // funEcho(2,'PHP_Init chargé...');
 ?>
+<!-- ***** 00-PHP_INIT.PHP : END ***** -->

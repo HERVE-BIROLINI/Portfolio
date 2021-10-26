@@ -1,5 +1,14 @@
+<!-- ***** Index.PHP (ADMIN) : START ***** -->
 <?php
+
     session_start();
+
+    // Si à l'entrée, le visiteur n'est pas connecté, renvoi à la page LogIn
+    if(!isset($_SESSION['email'])){
+        // if(!isset($_SESSION['admin']) or $_SESSION['admin']!=='1'){
+        header('location:../users/login.php?lang='.$sLang);
+    }
+    
 	// require_once __DIR__."/../../00-php_init.php";
 	require_once __DIR__."/../requires/00-php_init.php";
     //
@@ -12,27 +21,18 @@
             require_once CO_PATH_REQUIRES_TOP.$sFile;
         }
     }
-
-// $_SESSION['email']='guest';
-// $_SESSION['admin']='0';
-    // Si session administrateur, charge LES "modules" Read des sujet administrables
-    if(isset($_SESSION['email'])){
-    // if($_SESSION['admin']=='1'){
     
-        // les travaux WF3
-        require_once CO_PATH_WF3."read.php";
+    // les travaux WF3
+    require_once CO_PATH_WF3."read.php";
+
+    // Gestion/Administration des Langages
+    if($_SESSION['admin']==1){
+        require_once CO_PATH_LANGUAGE."read.php";
+    }
 ?>
 
 
 <?php
-        // Puis, ce qui pourrait venir derrière :...
-        //....
-    }
-    else{
-        funEcho(2,'<br><br> - CO_PATH_USERS = '.CO_PATH_USERS);
-        require_once CO_PATH_USERS.'login.php';
-        // header('location:'.CO_HTTP_USERS.'login.php?lang='.$sLang);
-    }
 
 	//
 	foreach(funDirFiles(CO_PATH_REQUIRES_BOTTOM,'') as $sFile){
@@ -41,3 +41,4 @@
 		}
 	}
 ?>
+<!-- ***** Index.PHP (ADMIN) : END ***** -->

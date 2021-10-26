@@ -1,0 +1,20 @@
+*{margin:0;
+    /* border:1px solid black; */
+}
+
+.HeaderHome{
+    height: 250px;
+    background-image: url(src/bike-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-position: top center ;
+}
+
+.Banner{
+    height: 50px;
+}
+
+.FooterHome{
+    border-top: 5px solid black;
+}

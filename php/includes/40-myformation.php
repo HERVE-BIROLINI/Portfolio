@@ -1,135 +1,70 @@
 
 <!-- ***** 40-MYFORMATION.PHP : START ***** -->
-
 <?php
     // Si poursuite du programme...
     // ... définie les variables en rapport avec la table à lire
     $sTableWf3='wf3';
     // ... récupération des projets WF3, par la présence d'une image pour chaque
+    $obPDO=new App\DBTools();
+    $obPDO->init();
     // $arWF3=fundirfiles(CO_PATH_SRC_WF3,'png');
     // var_dump($arWF3);
-    $obPDO=new Requires\DBTools;
-    $obPDO->init();
-
+    
     //
     require_once CO_PATH_ADMIN.'htmlgenerator.php';
     use Admin\htmlGenerator;
 
 ?>
-<!-- -->
-<style type="text/css">
-    #MyFormation{
-        background-color:#cecece;
-        padding:3em;
-    }
-    .PMyFormation{
-        font-size:2.5em;
-        font-family:'barlow';
-    }
-    .DivFormationIMG{
-        margin:2.5px;
-        margin-bottom:50px;
-        height:35vh;
-        width:45%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top center ;
-        filter: drop-shadow(0px 5px 10px black);
-    }
-    @media only screen and (max-width: 860px) {
-        .DivFormationIMG{width:100%;}
-    }
-    .DivFormationIMG:hover{
-        cursor:pointer;
-    }
-    .DivFormationIMG:active{
-        filter: none;
-    }
-    .DivTitle{
-        background-color:white;
-        height:35px;
-        width:100%;
-        position:absolute;
-        bottom:0em;
-        left:0em;
-        text-align:center;
-        align-items:center;
-        filter: drop-shadow(0px 2px 5px black);
-    }
-    .title{
-        padding-top:5px;
-    }
-</style>
-<!-- -->
-<script type="text/javascript">
-    // Fait tourner l'image dans le Carousel, et afficher le bon texte...
-    // function funRotateImage(vImage){
-    //     var sClassArrow=vImage.children('Img').attr('class').toUpperCase();
-    //     //
-    //     var sFileName=vImage.parent().children('.ImgVehicle').attr(`src`).substr(15,1);
-    //     if(sFileName===`0`){
-    //         sFileName=vImage.parent().children('.ImgVehicle').attr(`src`).slice(0,15)+'1.png'
-    //     }
-    //     else{
-    //         sFileName=vImage.parent().children('.ImgVehicle').attr(`src`).slice(0,15)+'0.png'
-    //     }
-    //     // vImage.parent().children('.ImgVehicle').attr(`src`,sFileName);
-    //     funChangeImageWithFade(vImage.parent().children('.ImgVehicle'),sFileName);
-    // }
-    //
-    // function funChangeImageWithFade(htmlImage,sFileImage){
-    //     var iDelay=150;
-    //     htmlImage.fadeOut(iDelay);
-    //     // - Méthode JQuery :
-    //     setTimeout(function(){htmlImage.attr(`src`,sFileImage);},iDelay);
-    //     /**/
-    //     htmlImage.fadeIn(iDelay);
-    // }
-    //
-    $(document).ready(function(){
-        //
-        $('body').on('change','#select',function(){
-            // stock la valeur choisi pour le filtre d'affichage des réalisations
-            var sNewOption=this.value;
-            // boucle sur les options proposées par la liste déroulantes
-			for(var iCount=0; iCount<this.options.length;iCount++){
-                var sCurOption=this.options[iCount].value;
-            //     //
-                if(sNewOption=='*' || sCurOption==sNewOption){
-                    if(sCurOption!=='*'){
-                        $('.'+sCurOption).each(function(){
-                            $(this).fadeIn();
-                        });
-                    }
-                }
-                else if(sCurOption!=='*'){
-                    $('.'+sCurOption).each(function(){
-                        $(this).fadeOut();
-                    });
-                }
-                else{console.log('  => Ne traite pas * !');}
-			}
-        })
-        //
-        $('body').on('click','.DivFormationIMG',function(){
-            window.location.href='php/wf3/responsivecontrol.php?lang='+$sLang+'&id='+$(this).find('.PId').text();
-        })
-    })
-</script>
 
 
 <div id="MyFormation"> <!--class="SecMyFormationColumn"-->
 
-    <div class="row align-items-center">
-        <p class="PMyFormation" style="margin-right:150px;"><?php if($sLang==='fr'){echo"Ma Formation, avec WebForce3 :";}else{echo"My Training, with WebForce3 :";};?></p>
-        <div class="row align-items-center justify-content-between" style="margin-bottom:10px;"><!--width:25%">-->
+    <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
+        <p class="PMyFormation"><?php if($sLang==='fr'){echo"Ma Formation, mes réalisations :";}else{echo"My Training, my productions :";};?></p>
+        <!-- <div class="d-flex flex-column pr-5" style="margin-bottom:10px;">
             <label for="language"><?php if($sLang==='fr'){echo"Langages : ";}else{echo"Languages : ";}?></label>
-            <?php echo htmlGenerator::getHtmlInput4Class($obPDO->getLanguages());?>
-        </div>
-        
+            <?php echo htmlGenerator::getHtmlSelect($obPDO->getLanguages()['select'],'select--language',null,false);?>
+        </div> -->
     </div>
 
-    <div class="d-flex flex-row col-12 flex-wrap"style="justify-content:space-evenly;">
+    <span class="SpanMyFormation">
+        <?php
+            if($sLang==='fr')
+            {echo"Vous pouvez voir ci-dessous un échantillon de mes productions, que ce soit en formation, ou bien personnelles.
+                Cette liste est évolutive, les données étant gérées en mode Administration. Connectez-vous en 'invité' pour jouer avec...";
+            }else{
+                echo"You can see below a sample of my productions, during the training, or even personal projects.
+                This list is evolving, the data being managed in Administration mode. You can log in as a 'guest' to play with ...";
+            }
+        ?>
+    </span>
+    <div class="d-flex flex-row flex-wrap">
+        <span class="SpanMyFormation">
+            <?php
+                if($sLang==='fr')
+                {echo"La liste des langages pour le filtrage de l'affichage ci-dessous est gérée par l'Administrateur dans un CRUD :";
+                }else{
+                    echo"The list of languages for display filtering ​​is managed by the Administrator in a CRUD:";
+                }
+            ?>
+        </span>
+        <div class="d-flex flex-column justify-content-center" style="margin-bottom:10px;">
+            <!-- <label for="language"><?php if($sLang==='fr'){echo"Langages : ";}else{echo"Languages : ";}?></label> -->
+            
+            <!--  20211025 - Source langage BdD -->
+            <!-- ------------------------------------ -->
+            <?php
+                $arClass=$obPDO->execSqlQuery("select label from language");
+                echo htmlGenerator::getHtmlSelect($arClass,'select--language',null,false);
+            ?>
+            <!-- <?php echo htmlGenerator::getHtmlSelect($obPDO->getLanguages()['select'],'select--language',null,false);?> -->
+            <!-- ------------------------------------ -->
+
+        </div>
+    </div>
+    <br>
+
+    <div class="d-flex flex-row col-12 flex-wrap" style="justify-content:space-evenly;">
         <?php
             // récupère la liste des champs de la table à lire
             $arFieldNames=$obPDO->funGetNameOfColumns($sTableWf3);
@@ -138,14 +73,21 @@
             {$arItems=$obPDO->execSqlQuery("SELECT * from $sTableWf3 order by priority");}
             else{$arItems=$obPDO->execSqlQuery("SELECT * from $sTableWf3");}
             //
+            // var_dump('<pre>');
+            // var_dump($arItems);
             foreach($arItems as $arItem){
         ?>
-        <div class="DivFormationIMG <?=$arItem['language']?>" style="background-image:url('<?php echo strtolower(CO_HTTP_SRC_WF3.$arItem['picture_name']);?>');">
+        <div class="DivFormationIMG <?=$arItem['language']?>"
+            style="background-image:url('<?php echo strtolower(CO_HTTP_SRC_WF3.$arItem['picture_name']);?>');"
+        >
             <div class="DivTitle"><h5 class="title"><?=$arItem['title_'.$sLang]?></h5></div>
+
+            <!-- <input type="hidden" id="default_item" name="default_item" 
+                {% if default_item is defined and default_item != null %}value="{{ default_item }}"{% endif %}
+            > -->
             <p class="PId" style="visibility:hidden;"><?=$arItem[$sTableWf3.'_id']?></p>
         </div>
         <?php }?>
     </div>
 </div>
-
 <!-- ***** 40-MYFORMATION.PHP : END ***** -->
