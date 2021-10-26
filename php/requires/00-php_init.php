@@ -59,6 +59,8 @@
     //
     defined('CO_HTTP_ADMIN') or define('CO_HTTP_ADMIN',CO_HTTP_PHP.'admin/');
     defined('CO_PATH_ADMIN') or define('CO_PATH_ADMIN',CO_PATH_PHP.'admin/');
+    defined('CO_HTTP_PUBLIC') or define('CO_HTTP_PUBLIC',CO_HTTP_PHP.'public/');
+    defined('CO_PATH_PUBLIC') or define('CO_PATH_PUBLIC',CO_PATH_PHP.'public/');
     defined('CO_HTTP_LANGUAGE') or define('CO_HTTP_LANGUAGE',CO_HTTP_PHP.'language/');
     defined('CO_PATH_LANGUAGE') or define('CO_PATH_LANGUAGE',CO_PATH_PHP.'language/');
     defined('CO_HTTP_LOGEMENTS') or define('CO_HTTP_LOGEMENTS',CO_HTTP_PHP.'logements/');
@@ -71,16 +73,17 @@
     defined('CO_PATH_SRC') or define('CO_PATH_SRC',CO_DOCUMENT_ROOT.'src/');
     defined('CO_HTTP_SRC_WF3') or define('CO_HTTP_SRC_WF3',CO_HTTP_SRC.'wf3/');
     defined('CO_PATH_SRC_WF3') or define('CO_PATH_SRC_WF3',CO_PATH_SRC.'wf3/');
-    defined('CO_HTTP_CSS') or define('CO_HTTP_CSS',CO_HTTP_ROOT.'css/');
-    defined('CO_PATH_CSS') or define('CO_PATH_CSS',CO_DOCUMENT_ROOT.'css/');
-    defined('CO_HTTP_JS') or define('CO_HTTP_JS',CO_HTTP_ROOT.'js/');
-    defined('CO_PATH_JS') or define('CO_PATH_JS',CO_DOCUMENT_ROOT.'js/');
+    // defined('CO_HTTP_CSS') or define('CO_HTTP_CSS',CO_HTTP_ROOT.'css/');
+    // defined('CO_PATH_CSS') or define('CO_PATH_CSS',CO_DOCUMENT_ROOT.'css/');
+    // defined('CO_HTTP_JS') or define('CO_HTTP_JS',CO_HTTP_ROOT.'js/');
+    // defined('CO_PATH_JS') or define('CO_PATH_JS',CO_DOCUMENT_ROOT.'js/');
     // Initialise les paramètres de connexion à la base de donnée
 
     /* inutile si on n'utilise pas les NAMESPACE
     // (avec Composer, et l'autoload norme PSR-4)
     // use Requires\DBTools;
-    // |--> utiliser Require ou Include fonctionne : */ require_once "01-db.php";
+    // |--> utiliser Require ou Include fonctionne : */
+    require_once "01-db.php";
     // require_once "php/requires/01-db.php";
 
     // $obPDO=new Requires\DBTools();

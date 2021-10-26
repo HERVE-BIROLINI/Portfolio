@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function(event){
+    console.log("dans DOMContentLoaded...");
     // POURQUOI CA NE PASSE PAS LA-DEDANS ????
     let arHtmlSelect=document.querySelectorAll('.html--select');
     console.log(arHtmlSelect);
@@ -9,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function(event){
 });
 
 $(document).ready(function(){
-
 
     // DEBUT 12-NAV //
     //--------------//
