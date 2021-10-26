@@ -8,16 +8,11 @@ namespace App;
 use PDO;
 
 class DBTools{
-    // Le typage ici des variables génère des erreurs dans Webhost
-    // protected string $sDB_NAME='id16523549_portfolio';
-    // private string $stQuery="mysql:host=localhost;dbname=id16523549_portfolio";
-    // private string $sUser='id16523549_herve';
-    // private string $sPwd='Webhost@MdP2019';
     //
     protected string $sDB_NAME='portfolio';
     private string $stQuery="mysql:host=127.0.0.1:8889;dbname=portfolio";
-    private string $sUser='root';
-    private string $sPwd='root';
+    private string $sUser='??';
+    private string $sPwd='??';
     //
     private PDO $obPDO;
 
