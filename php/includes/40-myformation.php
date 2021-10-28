@@ -20,7 +20,7 @@
 <div id="MyFormation"> <!--class="SecMyFormationColumn"-->
 
     <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
-        <p class="PMyFormation"><?php if($sLang==='fr'){echo"Ma Formation, mes réalisations :";}else{echo"My Training, my productions :";};?></p>
+        <p id="PMyFormation"><?php if($sLang==='fr'){echo"Ma Formation, mes réalisations :";}else{echo"My Training, my productions :";};?></p>
         <!-- <div class="d-flex flex-column pr-5" style="margin-bottom:10px;">
             <label for="language"><?php if($sLang==='fr'){echo"Langages : ";}else{echo"Languages : ";}?></label>
             <?php echo htmlGenerator::getHtmlSelect($obPDO->getLanguages()['select'],'select--language',null,false);?>
@@ -80,7 +80,7 @@
         <div class="DivFormationIMG <?=$arItem['language']?>"
             style="background-image:url('<?php echo strtolower(CO_HTTP_SRC_WF3.$arItem['picture_name']);?>');"
         >
-            <div class="DivTitle"><h5 class="title"><?=$arItem['title_'.$sLang]?></h5></div>
+            <div class="DivTitle"><h5 class="FormationIMG--title"><?=$arItem['title_'.$sLang]?></h5></div>
 
             <!-- <input type="hidden" id="default_item" name="default_item" 
                 {% if default_item is defined and default_item != null %}value="{{ default_item }}"{% endif %}

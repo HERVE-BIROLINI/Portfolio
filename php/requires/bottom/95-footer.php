@@ -3,9 +3,9 @@
 // echo'<br> - Chargement (include) du    FOOTer.PHP...';
 ?>
 
-<div style="padding-top:4.5em"></div>
+<div style="padding-top:5em"></div>
 
-<footer class="d-flex flex-column">
+<footer ><!-- class="d-flex flex-column"> -->
 	
 	<div id="Div-ShortCuts_Row">
 		<a href="mailto:birolini.herve@gmail.com" title="M'envoyer un courriel">

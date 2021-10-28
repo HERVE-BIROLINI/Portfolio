@@ -21,41 +21,10 @@
 <!-- INCLUSION BOOTSTRAP : Getbootstrap.com / JQUERY (CDN=LIEN EN LIGNE)-->
 <!-- <script src="js/bootstrap.js"></script> -->
 
-	<script src="../../src/portfolio.js"async></script>
+	<script src="../../src/portfolio.js?v=<? echo time(); ?>"async></script>
 	<!-- <script src="src/portfolio.js"async></script> -->
 	
 
 	<script type="text/javascript">
-	// BIZARRE, ON DIRAIT QUE NON !!!
-	//--------------------------------
-		// /* Si besoin d'utiliser $sLang,
-		// * il faudra copier la fonction dans ce fichier,
-		// * et instancier de nouveau la variable.
-		// * ==> les fonctions et variables JS ne sont pas "transmissibles"
-		// *	 d'un fichier à l'autre, contraire au PHP...
-		// * !!!! DONC $_GET NE SERT A RIEN ICI !!!!
-		// */
-		function $_GET(param){
-			var aVars={};
-			window.location.href.replace(location.hash,'').replace( 
-				/[?&]+([^=&]+)=?([^&]*)?/gi,
-				function(m,key,value){aVars[key]=value!==undefined?value:'';}
-			);
-			if(param){return aVars[param]?aVars[param]:null;}
-			return aVars;
-		}
-		//
-		function funNoClick(){
-			// alert('Clic droit interdit');
-			return(false);
-		}
-		/**/
-		var $arGET=$_GET();
-		if($arGET['lang']){var $sLang=$arGET['lang'];}else{var $sLang='fr';}
-		/**/
-		$(document).ready(function(){
-			//
-			document.contextmenu=funNoClick();
-		});
 	</script>
 <!-- ***** 96-JS_JQUERY_BOOTSTRAP.PHP : END ***** -->

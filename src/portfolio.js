@@ -10,6 +10,37 @@ document.addEventListener("DOMContentLoaded", function(event){
 });
 
 $(document).ready(function(){
+	// BIZARRE, ON DIRAIT QUE NON !!!
+	//--------------------------------
+		// /* Si besoin d'utiliser $sLang,
+		// * il faudra copier la fonction dans ce fichier,
+		// * et instancier de nouveau la variable.
+		// * ==> les fonctions et variables JS ne sont pas "transmissibles"
+		// *	 d'un fichier à l'autre, contraire au PHP...
+		// * !!!! DONC $_GET NE SERT A RIEN ICI !!!!
+		// */
+		function $_GET(param){
+			var aVars={};
+			window.location.href.replace(location.hash,'').replace( 
+				/[?&]+([^=&]+)=?([^&]*)?/gi,
+				function(m,key,value){aVars[key]=value!==undefined?value:'';}
+			);
+			if(param){return aVars[param]?aVars[param]:null;}
+			return aVars;
+		}
+		//
+		function funNoClick(){
+			// alert('Clic droit interdit');
+			return(false);
+		}
+		/**/
+		// var $arGET=$_GET();
+		// if($arGET['lang']){var $sLang=$arGET['lang'];}else{var $sLang='fr';}
+		// /**/
+		// $(document).ready(function(){
+		// 	//
+		// 	document.contextmenu=funNoClick();
+		// });
 
     // DEBUT 12-NAV //
     //--------------//
@@ -89,7 +120,7 @@ $(document).ready(function(){
                     $(this).fadeOut();
                 });
             }
-            else{console.log('  => Ne traite pas * !');}
+            // else{console.log('  => Ne traite pas * !');}
         }
     });
     //
@@ -105,12 +136,21 @@ $(document).ready(function(){
 
     // DEBUT Footer //
     //--------------//
-    // *** Gestion du scroll ***
-    // -- ... Récupère la hauteur par l'appel d'une fonction,car a besoin d'être dynamique,
-    // -- => grandi avec l'ajout de nouveaux éléments...
     function getHeight(){return document.documentElement.scrollHeight;};
     function getInnerHeight(){return window.innerHeight?window.innerHeight:document.documentElement.clientHeight;};
     function getScrollTop(){return Math.max(document.body.scrollTop,document.documentElement.scrollTop);};
+
+    // *** à l'ouverture, si page moins haute que l'écran, fixe le Footer ***
+    let htmlFooter=document.querySelector('footer');
+    if(htmlFooter){
+        // if(Math.round(document.body.clientHeight)<Math.round(getInnerHeight())){
+            htmlFooter.setAttribute("style","position:fixed;bottom:-0.75em;");
+        // }
+    }
+    
+    // *** Gestion du scroll ***
+    // -- ... Récupère la hauteur par l'appel d'une fonction,car a besoin d'être dynamique,
+    // -- => grandi avec l'ajout de nouveaux éléments...
     // -- Fonction d'analyse de la progression du scroll et de création des nouveaux éléments
     function waitForBottom() {
         // alert('au boulot !');
@@ -201,5 +241,43 @@ $(document).ready(function(){
     });
     //-----------------------//
     // FIN Responsivecontrol //
+
+    //------------------------------------------------------------------
+    // *** DEBUT - Gestion du centrage d'un élément dans son parent ***
+    //------------------------------------------------------------------
+    let arToCenterInto=document.querySelectorAll('.tocenterinto');
+    if(arToCenterInto){
+        arToCenterInto.forEach(htmlItem => {
+            htmlItem.parentNode.style.position='relative';
+            htmlItem.style.position='absolute';
+        })
+    }
+    //----------------------------------------------------------------
+    // *** FIN - Gestion du centrage d'un élément dans son parent ***
+    //----------------------------------------------------------------
+
+
+    
+    let htmlBlk2HideIfPhone=document.querySelector('#blk--2hide-if-phonescreen');
+    let htmlBlk2ShowIfPhone=document.querySelector('#blk--2show-if-phonescreen');
+    if(htmlBlk2HideIfPhone){
+        if(Math.round(document.body.clientWidth)<768){
+            htmlBlk2HideIfPhone.style.display="none";
+            //
+            htmlBlk2ShowIfPhone.style.display="";
+        }
+    }
+    // *** Pose de l'espion du mouvement de scrolling ***
+    window.addEventListener('resize', function(event) {
+        if(htmlBlk2HideIfPhone){
+            if(Math.round(document.body.clientWidth)<768){
+                htmlBlk2HideIfPhone.style.display="none";
+                htmlBlk2ShowIfPhone.style.display="";
+            }else{
+                htmlBlk2HideIfPhone.style.display="";
+                htmlBlk2ShowIfPhone.style.display="none";
+            }
+        }
+    }, true);
 
 });

@@ -9,8 +9,8 @@
 
 <body>
 	<!-- *** ** HEADER ** *** -->
-	<header>
-		<div id="DivNav">
+	<header ><!-- id="DivNav"> -->
+		<!-- <div class="d-flex flex-column" id="DivNav"> -->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:white;">
 				<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,7 +126,7 @@
 				</div>
 
 			</nav>
-		</div>
+		<!-- </div> -->
 	</header>
 	<!-- zone de marge = hauteur du ruban de menu HEAD -->
 	<div style="height:3.5em;"></div>

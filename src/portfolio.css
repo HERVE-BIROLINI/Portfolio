@@ -8,16 +8,48 @@
 
 
 body{
-    position:relative;
-    /* width:100vw; */
+    /* border:5px solid blue; */
     display:flex;
     flex-direction:column;
+    /**/
+    position:relative;
+    /**/
+    /* width:max-content; /!\ SURTOUT PAS !!!! */
+    width:100vw;
     justify-content:center;
+	background-color: rgb(240, 240, 240);
+    /**/
+    /* min-height:100%; */
+}
+header{/*,#DivNav{*/
+    /**/
+    /* align-self:center; */
+    /* justify-self:center; */
+    /**/
+    /* border:10px solid red; */
+    width:100%;
+    position:fixed;
+    top:0;
+    z-index: 100;
 }
 table{
-    border-left:1px solid grey;
-    border-right:1px solid grey;
-    border-bottom:1px solid grey;
+    border:2px solid grey;
+}
+label{
+    font-weight:bolder;
+}
+footer{
+    /* width:max-content; */
+    padding-left:1em;
+    padding-right:1em;
+    /**/
+    /* position:fixed; */
+    /* bottom:-0.75em; */
+    width:100%;
+    z-index:100;
+    /**/
+    text-align:center;
+    background-color:grey;
 }
 
 
@@ -32,6 +64,8 @@ table{
 .btn{
     width:max-content;
     height:max-content;
+    margin-left:0.5em;
+    margin-right:0.5em;
     /* width:fit-content; */
     /* height:fit-content; */
 }
@@ -73,12 +107,6 @@ table{
 
 /* DEBUT 12-NAV */
 /****************/
-#DivNav{
-    width:100vw;
-    position:fixed;
-    top:0;
-    z-index: 1;
-}
 /**/
 .DivLang{
     width:80px;
@@ -198,10 +226,6 @@ table{
     background-color:grey;
     padding:3em;
 }
-.PMyProfile{
-    font-size:2.5em;
-    font-family:'barlow';
-}
 .SpanMyProfile{
     font-size:1.2em;
     font-family:'barlow';
@@ -220,12 +244,12 @@ table{
     background-color:#cecece;
     padding:3em;
 }
-.PMyFormation,.PLanguages{
-    /* padding-left:1.5em; */
+/* #PMyProfile,#PMyFormation,#PLanguages{
+    padding-left:1.5em;
     font-size:2.5em;
     font-family:'barlow';
-    /* align-self:flex-start; */
-}
+    align-self:flex-start;
+} */
 .SpanMyFormation{
     font-size:1.2em;
     font-family:'barlow';
@@ -251,20 +275,27 @@ table{
 }
 @media only screen and (max-width: 860px) {
     .DivFormationIMG{width:100%;}
+    .FormationIMG--title{
+        padding-top:2px;
+        font-size:0.75em;
+        align-self:center;
+    }
 }
 /* */
 .DivTitle{
-    position:absolute;
     background-color:white;
     height:35px;
     width:100%;
+    /**/
+    position:absolute;
     bottom:0em;
     left:0em;
+    /**/
     text-align:center;
     align-items:center;
     filter: drop-shadow(0px 1px 2px black);
 }
-.title{
+.FormationIMG--title{
     padding-top:5px;
 }
 /**********************/
@@ -276,15 +307,6 @@ table{
 
 /* DEBUT Footer */
 /****************/
-footer{
-    position:fixed;
-    bottom:-0.75em;
-    width:100%;
-    z-index: 1;
-    /**/
-    text-align:center;
-    background-color:grey;
-}
 #Div-ShortCuts_Row{
     display:flex;
     flex-direction:row;
@@ -323,12 +345,12 @@ footer > p{
     padding-top: 25px;
     padding-bottom: 25px;
     width:95vw;
-    height:80vh;
+    height:70vh;
     border-radius:10px;
     /**/
     position:fixed;
     left:2.5vw;
-    bottom:11vh;
+    bottom:17vh;
     /**/
     filter: drop-shadow(0px 2px 5px black);
     /**/
@@ -344,6 +366,13 @@ footer > p{
     width:375px;
     height:50%;
 }
+#blk--2show-if-phonescreen{
+    margin-top: 5em;
+    /* padding-left: 2em;
+    padding-right: 2em; */
+    /**/
+    font-weight:bold;
+}
 /*************************/
 /* FIN ResponsiveControl */
 
@@ -353,10 +382,62 @@ footer > p{
 
 
 /* DEBUT Admin/Read */
+/********************/
+.form--crud{
+    /* border:2px solid red; */
+    display:flex;
+    flex-direction:column;
+    /**/
+    width:90%;
+    /**/
+    /* margin-bottom:5em; */
+    /* margin-left:5em;
+    margin-right:5em; */
+    /* padding-top:2em; */
+    justify-self:center;
+    align-self:center;
+}
+.p--title-form{
+    font-size:2.5em;
+    font-family:'barlow';
+}
+/* #form--realisations{
+    align-items:center;
+} */
+@media screen and (max-width: 760px){
+    .p--title-form{
+        font-size:1.5em;
+        font-weight:bolder;
+    }
+    #DivTitleRow{
+        padding-top: 2.5em;
+    }
+	.form--crud{
+		/* margin-top:3em; */
+	}
+}
 #DivTitleRow{
+    /* border:2px solid blue; */
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    /**/
+    margin-top:3em;
+    margin-left:5%;
+
+    width:fit-content;
+    /* width:100%; */
+
     justify-content:space-between;
 }
 #TableBody{
     font-size:0.75em;
 }
+.div--form-row{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+/******************/
 /* FIN Admin/Read */
+

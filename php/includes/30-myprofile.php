@@ -3,7 +3,7 @@
 <!-- -->
 <div id="MyProfile">
     <img src="<?=CO_HTTP_SRC.'portrait.jpg'?>" alt="portrait Hervé Birolini" style="height:100px;" />
-    <p class="PMyProfile"><?php if($sLang==='fr'){echo"Mon profil :";}else{echo"My profile :";}?></p>
+    <p class="p--title-form" id="PMyProfile"><?php if($sLang==='fr'){echo"Mon profil :";}else{echo"My profile :";}?></p>
 
     <span class="SpanMyProfile col-10">
         <?php

@@ -19,10 +19,8 @@
     if(isset($arLanguages)){
 ?>
     
-<form class="d-flex flex-column mx-5 pt-3 mb-5" id="form--languages">
-<!-- <div class="d-flex flex-column mx-5 pt-3 mb-5"> -->
-    <div class="d-flex flex-row align-items-center w-100 pr-5" id="DivTitleRow">
-        <p class="PLanguages">
+    <div class="align-items-center" id="DivTitleRow">
+        <p class="p--title-form" id="PLanguages">
             <?php 
                 if($sLang==='fr')
                 {echo"Liste des langages :";}
@@ -31,8 +29,10 @@
         </p>
         <a href="<?= CO_HTTP_LANGUAGE.'create.php?lang='.$sLang;?>" class="btn btn-primary"><?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?></a>
     </div>
+<form class="form--crud" id="form--languages">
+<!-- <div class="d-flex flex-column mx-5 pt-3 mb-5"> -->
     <!--  -->
-    <table class="table table-hover table-striped" id="TableProductions" ><!-- style='width:80%;text-align:center;'> -->
+    <table class="table table-hover table-striped" ><!-- id="TableLanguages" style='width:80%;text-align:center;'> -->
         <thead class="thead-dark" id="TableHead"><!-- class="thead-dark"> -->
             <tr>
                 <th width='2%'></th>
@@ -51,7 +51,7 @@
                 <?php
                     }
                 ?>
-                <th width='<?=floor(50/(count($arFieldNames)*3));?>%'>Actions</th>
+                <th width='<?=floor(100/(count($arFieldNames)*3));?>%'>Actions</th>
             </tr>
         </thead>
         <!-- -->
@@ -71,12 +71,14 @@
                     }
                 ?>
                 <td>
+                    <div class='d-flex flex-row flex-nowrap'>
                     <!-- <?php //if($arRow[$arFieldNames[1]]=="*"){ ?> -->
                     <!-- <i class="fas fa-lock"></i> -->
                     <!-- <?php //}else{ ?> -->
                     <a href=<?= CO_HTTP_LANGUAGE.'update.php?id='.$arRow['id'].'&amp;lang='.$sLang;?> class="btn btn-primary"><?php if($sLang==='fr'){echo'Modifier';}else{echo'Edit';}?></a>
                     <a href=<?= CO_HTTP_LANGUAGE.'delete.php?id='.$arRow['id'].'&amp;lang='.$sLang;?> class="btn btn-danger"><?php if($sLang==='fr'){echo'Supprimer';}else{echo'Delete';}?></a>
                     <!-- <?php //} ?> -->
+                    </div>
                 </td>
             </tr>
             <?php
