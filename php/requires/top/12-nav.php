@@ -18,12 +18,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a id="NavHome" class="nav-link active" href=<?=CO_HTTP_PUBLIC.'?lang='.$sLang?>>
+						<a id="NavHome" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang?>" onclick="location.reload()"><!--  active -->
 							<?php if($sLang==='fr'){echo'Accueil';}else{echo'Home';};?>
 							<span class="sr-only">(current)</span>
 						</a>
-						<a id="NavProfile" class="nav-link" href="<?=CO_HTTP_PUBLIC.'?lang='.$sLang.'#MyProfile'?>"><?php if($sLang==='fr'){echo'Mon profil';}else{echo'My profile';}; ?></a>
-						<a id="NavFormation" class="nav-link" href="<?=CO_HTTP_PUBLIC.'?lang='.$sLang.'#MyFormation'?>"><?php if($sLang==='fr'){echo'Ma formation';}else{echo'My formation';}; ?></a>
+						<a id="NavProfile" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang.'#MyProfile'?>" onclick="location.reload()"><?php if($sLang==='fr'){echo'Mon profil';}else{echo'My profile';}; ?></a>
+						<a id="NavFormation" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang.'#MyFormation'?>" onclick="location.reload()"><?php if($sLang==='fr'){echo'Ma formation';}else{echo'My formation';}; ?></a>
 						<!-- <a id="NavCV" class="nav-link" href="../CV/CV Hervé BIROLINI-Stagiaire Développeur WEB.html" target="_blank"><?php /*if($sLang==='fr'){echo'Mon Curriculum Vitae';}else{echo'My Curriculum Vitae';};*/ ?></a>
 						<a id="NavContact" class="nav-link" href="#ContactMe"><?php /*if($sLang==='fr'){echo'Me contacter';}else{echo'Contact me';};*/ ?></a> -->
 						<!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->

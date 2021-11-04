@@ -171,10 +171,14 @@ footer{
 }
 .DivAccueilRow{
 /* border:1px solid yellow; */
-    text-shadow: 1px 1px 0.1em red, 2px 2px 0.01em grey, 5px 5px 0.1em black;
+
+    /* text-shadow: 1px 1px 0.1em red, 2px 2px 0.01em grey, 5px 5px 0.1em black; */
+    font-weight:bolder;
+
     /* text-shadow: 1px 1px 2px red, 0 0 1em grey, 0 0 0.2em black; */
 }
 .DivAccueilRow>.SpanTitleBig{
+    text-shadow: 1px 1px 0.1em red, 2px 2px 0.01em grey, 5px 5px 0.1em black;
     font-size:2.8em;
     font-weight:bolder;
 }
@@ -332,6 +336,18 @@ footer > p{
     color:white;
     font-style:italic;
 }
+@media only screen and (max-width: 600px){
+    footer > p{
+        font-size:0.5em;
+    }
+    .ShortCuts{
+        margin:10px;
+        font-size:0.5em;
+    }
+    #ImgCV{
+        height:8px;
+    }
+}
 /**************/
 /* FIN Footer */
 
@@ -388,7 +404,7 @@ footer > p{
     display:flex;
     flex-direction:column;
     /**/
-    width:90%;
+    /* width:90%; */
     /**/
     /* margin-bottom:5em; */
     /* margin-left:5em;
@@ -409,12 +425,12 @@ footer > p{
         font-size:1.5em;
         font-weight:bolder;
     }
-    #DivTitleRow{
+    /* #DivTitleRow{
         padding-top: 2.5em;
-    }
-	.form--crud{
-		/* margin-top:3em; */
-	}
+    } */
+	/* .form--crud{
+		margin-top:3em;
+	} */
 }
 #DivTitleRow{
     /* border:2px solid blue; */
@@ -422,7 +438,7 @@ footer > p{
     flex-direction:row;
     flex-wrap:wrap;
     /**/
-    margin-top:3em;
+    /* margin-top:3em; */
     margin-left:5%;
 
     width:fit-content;
@@ -440,4 +456,37 @@ footer > p{
 }
 /******************/
 /* FIN Admin/Read */
+
+
+
+/* - class liées à la gestion de tableaux multi-onglets en Javascript - */
+.row--tabtype{
+    display:flex;
+    flex-direction:row;
+}
+.btn--tabtype{
+    padding-left: 1em;
+    padding-right: 1em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    /**/
+    border:0.25px solid grey;
+    border-bottom:0;
+    box-shadow: 0 0 0 0, 0 -4px 4px 0 rgb(140, 140, 140);
+}
+.btn--tabtype:hover{
+    cursor:pointer;
+}
+.work--sheet{
+    margin-top:5em;
+    align-self:center;
+    justify-self:center;
+    width:max-content;
+}
+
+@media screen and (max-width: 760px){
+    .work--sheet{
+        align-self:unset;
+    }
+}
 

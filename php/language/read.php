@@ -18,6 +18,12 @@
     // Si la table comporte bien des enregistrements
     if(isset($arLanguages)){
 ?>
+
+
+<form class="form--crud block--tabtype" id="form--languages" parent_id="btn--tabtype--languages">
+<!-- <div class="d-flex flex-column mx-5 pt-3 mb-5"> -->
+
+
     
     <div class="align-items-center" id="DivTitleRow">
         <p class="p--title-form" id="PLanguages">
@@ -27,10 +33,18 @@
                 else{echo"Languages lists :";};
             ?>
         </p>
-        <a href="<?= CO_HTTP_LANGUAGE.'create.php?lang='.$sLang;?>" class="btn btn-primary"><?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?></a>
+        <a href="<?= CO_HTTP_LANGUAGE.'create.php?lang='.$sLang;?>"
+            <?php if($_SESSION['admin']==1){ ?>
+            class="btn btn-primary"
+            <?php }else{ ?>
+            class="btn btn-primary disabled"
+            <?php } ?>
+        >
+        <?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?>
+    </a>
     </div>
-<form class="form--crud" id="form--languages">
-<!-- <div class="d-flex flex-column mx-5 pt-3 mb-5"> -->
+
+
     <!--  -->
     <table class="table table-hover table-striped" ><!-- id="TableLanguages" style='width:80%;text-align:center;'> -->
         <thead class="thead-dark" id="TableHead"><!-- class="thead-dark"> -->
@@ -75,8 +89,24 @@
                     <!-- <?php //if($arRow[$arFieldNames[1]]=="*"){ ?> -->
                     <!-- <i class="fas fa-lock"></i> -->
                     <!-- <?php //}else{ ?> -->
-                    <a href=<?= CO_HTTP_LANGUAGE.'update.php?id='.$arRow['id'].'&amp;lang='.$sLang;?> class="btn btn-primary"><?php if($sLang==='fr'){echo'Modifier';}else{echo'Edit';}?></a>
-                    <a href=<?= CO_HTTP_LANGUAGE.'delete.php?id='.$arRow['id'].'&amp;lang='.$sLang;?> class="btn btn-danger"><?php if($sLang==='fr'){echo'Supprimer';}else{echo'Delete';}?></a>
+                    <a href=<?= CO_HTTP_LANGUAGE.'update.php?id='.$arRow['id'].'&amp;lang='.$sLang;?>
+                        <?php if($_SESSION['admin']==1){ ?>
+                        class="btn btn-primary"
+                        <?php }else{ ?>
+                        class="btn btn-primary disabled"
+                        <?php } ?>
+                    >
+                    <?php if($sLang==='fr'){echo'Modifier';}else{echo'Edit';}?>
+                    </a>
+                    <a href=<?= CO_HTTP_LANGUAGE.'delete.php?id='.$arRow['id'].'&amp;lang='.$sLang;?>
+                        <?php if($_SESSION['admin']==1){ ?>
+                        class="btn btn-danger"
+                        <?php }else{ ?>
+                        class="btn btn-danger disabled"
+                        <?php } ?>
+                    >
+                    <?php if($sLang==='fr'){echo'Supprimer';}else{echo'Delete';}?>
+                    </a>
                     <!-- <?php //} ?> -->
                     </div>
                 </td>
@@ -88,7 +118,15 @@
         <tfoot>
             <tr>
                 <td colspan="99">
-                    <a href="<?= CO_HTTP_LANGUAGE.'create.php?lang='.$sLang;?>" class="btn btn-primary"><?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?></a>
+                    <a href="<?= CO_HTTP_LANGUAGE.'create.php?lang='.$sLang;?>"
+                        <?php if($_SESSION['admin']==1){ ?>
+                        class="btn btn-primary"
+                        <?php }else{ ?>
+                        class="btn btn-primary disabled"
+                        <?php } ?>
+                    >
+                    <?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?>
+                    </a>
                 </td>
             </tr>
         </tfoot>

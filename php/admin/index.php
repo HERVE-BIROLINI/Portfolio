@@ -21,16 +21,45 @@
             require_once CO_PATH_REQUIRES_TOP.$sFile;
         }
     }
-    
+?>
+
+<div class="work--sheet">
+    <!-- * Les onglets de sélection du block affiché * -->
+    <div class="row--tabtype" id="row--tabtype--admin">
+        <div class="btn--tabtype" id="btn--tabtype--realisations" parent_id="row--tabtype--admin" default>
+            <i class="ri-chat-upload-line"></i>
+            <?php 
+                if($sLang==='fr')
+                {echo"Réalisations";}
+                else{echo"Works";};
+            ?>
+        </div>
+        <div class="btn--tabtype" id="btn--tabtype--languages" parent_id="row--tabtype--admin">
+            <i class="ri-mail-download-line"></i>
+            <?php 
+                if($sLang==='fr')
+                {echo"Langages (CRUD réservé à l'Administrateur)";}
+                else{echo"Languages (CRUD for Administrator only)";};
+            ?>
+        </div>
+    </div>
+
+    <div style="border-top:1px solid grey;border-left:3px solid black;border-right:3px solid black;border-bottom:3px solid black;">
+
+
+<?php
     // les travaux WF3
     require_once CO_PATH_WF3."read.php";
 
     // Gestion/Administration des Langages
-    if($_SESSION['admin']==1){
+    // if($_SESSION['admin']==1 ){
         require_once CO_PATH_LANGUAGE."read.php";
-    }
+    // }
 ?>
 
+
+    </div>
+</div>
 
 <?php
 

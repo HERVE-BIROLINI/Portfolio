@@ -64,7 +64,7 @@
     <h4 class="H4ProductView"><?=$arItem['title_'.$sLang]?></h4>
     <br>
     <h6 class="H6ProductView"><?=$arItem['subject_'.$sLang]?></h6>
-    <p class="PProductView"><?=$arItem['comments_'.$sLang]?></p>
+    <p class="PProductView mx-3"><?=$arItem['comments_'.$sLang]?></p>
 </div>
 
 <div class="" id="blk--2show-if-phonescreen" style="display:none;">

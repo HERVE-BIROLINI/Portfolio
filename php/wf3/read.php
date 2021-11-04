@@ -26,6 +26,10 @@
         $sFields4Request=substr($sFields4Request,1);
 ?>
     
+<form class="form--crud block--tabtype" id="form--realisations" parent_id="btn--tabtype--realisations">
+<!-- <div class="d-flex flex-column mx-5 pt-3"> -->
+
+
     <div class="align-items-center" id="DivTitleRow"><!--  w-100 -->
         <p class="p--title-form" id="PMyFormation">
             <?php 
@@ -34,10 +38,12 @@
                 else{echo"Works lists :";};
             ?>
         </p>
-        <a class="btn btn-primary" href="<?= CO_HTTP_WF3.'create.php?lang='.$sLang;?>"><?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?></a>
+        <a class="btn btn-primary" href="<?= CO_HTTP_WF3.'create.php?lang='.$sLang;?>">
+        <?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?>
+        </a>
     </div>
-<form class="form--crud" id="form--realisations">
-<!-- <div class="d-flex flex-column mx-5 pt-3"> -->
+    
+
     <!--  -->
     <table class="table table-hover table-striped" ><!-- id="TableProductions" style='width:80%;text-align:center;'> -->
         <thead class="thead-dark" id="TableHead"><!-- class="thead-dark"> -->

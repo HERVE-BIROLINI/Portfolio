@@ -19,8 +19,8 @@
 
 <div id="MyFormation"> <!--class="SecMyFormationColumn"-->
 
-    <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
-        <p id="PMyFormation"><?php if($sLang==='fr'){echo"Ma Formation, mes réalisations :";}else{echo"My Training, my productions :";};?></p>
+    <div class="d-flex flex-row flex-wrap align-items-center justify-content-between mt-5">
+        <p class="p--title-form" id="PMyFormation"><?php if($sLang==='fr'){echo"Ma Formation, mes réalisations :";}else{echo"My Training, my productions :";};?></p>
         <!-- <div class="d-flex flex-column pr-5" style="margin-bottom:10px;">
             <label for="language"><?php if($sLang==='fr'){echo"Langages : ";}else{echo"Languages : ";}?></label>
             <?php echo htmlGenerator::getHtmlSelect($obPDO->getLanguages()['select'],'select--language',null,false);?>
