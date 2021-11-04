@@ -2,8 +2,10 @@
 <!-- ***** 30-MYPROFILE.PHP : START ***** -->
 <!-- -->
 <div id="MyProfile">
-    <p class="PMyProfile"><?php if($sLang==='fr'){echo"Mon profil :";}else{echo"My profile :";}?></p>
-    <span class="SpanMyProfile">
+    <img class="mt-5" src="<?=CO_HTTP_SRC.'portrait.jpg'?>" alt="portrait Hervé Birolini" style="height:100px;" />
+    <p class="p--title-form" id="PMyProfile"><?php if($sLang==='fr'){echo"Mon profil :";}else{echo"My profile :";}?></p>
+
+    <span class="SpanMyProfile col-10">
         <?php
             if($sLang==='fr')
             {echo"Je me nomme Hervé BIROLINI, et j'ai créé ce portfolio pour me présenter à vous,
@@ -14,6 +16,7 @@
             }
         ?>
     </span><br><br>
+
     <span class="SpanMyProfile">
         <?php
             if($sLang==='fr')

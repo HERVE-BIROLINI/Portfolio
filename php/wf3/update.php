@@ -198,11 +198,17 @@
         //-------------------------------------
 ?>
 
-<div class="d-flex flex-column mx-5 pt-3">
-    <div class="d-flex flex-row align-items-center w-100 pr-5" id="DivTitleRow">
-        <p class="PMyFormation"><?php if($sLang==='fr'){echo"Modification d'une réalisation :";}else{echo"Update a production :";}; ?></p>
+<!-- <div class="d-flex flex-column mx-5 pt-3"> -->
+    <div class="align-items-center" id="DivTitleRow">
+        <p class="p--title-form" id="PMyFormation">
+            <?php
+                if($sLang==='fr')
+                {echo"Modification d'une réalisation :";}
+                else{echo"Update a production :";};
+            ?>
+        </p>
     </div>
-</div>
+<!-- </div> -->
 
 <div class="d-flex flex-row pb-5 mb-5 justify-content-center pb-5">
     <form class="py-3 col-10" method="post" enctype="multipart/form-data"
@@ -213,11 +219,11 @@
             foreach($arFieldNames as $sValue){
         ?>
 
-        <div class="d-flex flex-row col-12">
-            <div class="d-flex flex-column col-4">
+        <div class="div--form-row">
+            <div class="d-flex flex-column col-12 col-md-4">
                 <?php echo htmlGenerator::getHtmlLabel($sValue,null,true);?>
             </div>
-            <div class="d-flex flex-column col-8">
+            <div class="d-flex flex-column col-12 col-lg-8">
                 <?php
                     // 20211025 - Source langage BdD (2/3)
                     //-------------------------------------

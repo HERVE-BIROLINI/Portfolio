@@ -31,7 +31,7 @@
     $arItem=$arItem[0];
 ?>
 
-<div class="DivProductView">
+<div class="DivProductView " id="blk--2hide-if-phonescreen">
     <div class="close">
         <i class="far fa-window-maximize"
             title="<?php if($sLang=='fr'){echo'Ouvrir dans une nouvelle fenêtre';}else{echo'Open un a new window';}?>"
@@ -64,7 +64,16 @@
     <h4 class="H4ProductView"><?=$arItem['title_'.$sLang]?></h4>
     <br>
     <h6 class="H6ProductView"><?=$arItem['subject_'.$sLang]?></h6>
-    <p class="PProductView"><?=$arItem['comments_'.$sLang]?></p>
+    <p class="PProductView mx-3"><?=$arItem['comments_'.$sLang]?></p>
+</div>
+
+<div class="" id="blk--2show-if-phonescreen" style="display:none;">
+    <span>
+        <?php
+            if($sLang=='fr'){echo"L'outil de comparaison du ResponsiveDesign sur un écran de petite taille ne peut-être exécuté...";}
+            else{echo"The ResponsiveDesign comparison tool on a little size screen cannot be run...";}
+        ?>
+    </span>
 </div>
 
 

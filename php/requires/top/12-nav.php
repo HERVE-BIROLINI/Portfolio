@@ -3,15 +3,14 @@
 	if(isset($_GET['lang']))
 	{$sLang=$_GET['lang'];}
 	else{$sLang='fr';}
-	// funEcho(2,'<br><br><br><br>CO_HTTP_USERS = ');
-	// 	var_dump(CO_HTTP_USERS);
+
+	// funEcho(-1,'<br>CO_HTTP_PUBLIC = '.CO_HTTP_PUBLIC.'<br>lang = '.$sLang.'<br><br>');
 ?>
 
 <body>
 	<!-- *** ** HEADER ** *** -->
-	<header>
-		<div id="DivNav">
-
+	<header ><!-- id="DivNav"> -->
+		<!-- <div class="d-flex flex-column" id="DivNav"> -->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:white;">
 				<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,12 +18,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a id="NavHome" class="nav-link active" href=<?=CO_HTTP_ROOT.'?lang='.$sLang?>>
+						<a id="NavHome" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang?>" onclick="location.reload()"><!--  active -->
 							<?php if($sLang==='fr'){echo'Accueil';}else{echo'Home';};?>
 							<span class="sr-only">(current)</span>
 						</a>
-						<a id="NavProfile" class="nav-link" href=<?=CO_HTTP_ROOT.'?lang='.$sLang.'#MyProfile'?>><?php if($sLang==='fr'){echo'Mon profil';}else{echo'My profile';}; ?></a>
-						<a id="NavFormation" class="nav-link" href=<?=CO_HTTP_ROOT.'?lang='.$sLang.'#MyFormation'?>><?php if($sLang==='fr'){echo'Ma formation';}else{echo'My formation';}; ?></a>
+						<a id="NavProfile" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang.'#MyProfile'?>" onclick="location.reload()"><?php if($sLang==='fr'){echo'Mon profil';}else{echo'My profile';}; ?></a>
+						<a id="NavFormation" class="nav-link" href="<?=CO_HTTP_PUBLIC.'index.php?lang='.$sLang.'#MyFormation'?>" onclick="location.reload()"><?php if($sLang==='fr'){echo'Ma formation';}else{echo'My formation';}; ?></a>
 						<!-- <a id="NavCV" class="nav-link" href="../CV/CV Hervé BIROLINI-Stagiaire Développeur WEB.html" target="_blank"><?php /*if($sLang==='fr'){echo'Mon Curriculum Vitae';}else{echo'My Curriculum Vitae';};*/ ?></a>
 						<a id="NavContact" class="nav-link" href="#ContactMe"><?php /*if($sLang==='fr'){echo'Me contacter';}else{echo'Contact me';};*/ ?></a> -->
 						<!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
@@ -34,7 +33,7 @@
 							if(isset($_SESSION['admin']) ){ /* and $_SESSION['admin']=='1'){ */
 						?>
 							<!-- Si ROLE Admin -->
-							<a id="NavAdmin" class="nav-link" href=<?=CO_HTTP_ADMIN.'?lang='.$sLang?>>Administration</a>
+							<a id="NavAdmin" class="nav-link" href="<?=CO_HTTP_ADMIN.'?lang='.$sLang?>">Administration</a>
 
 						<?php 
 							}
@@ -127,7 +126,7 @@
 				</div>
 
 			</nav>
-		</div>
+		<!-- </div> -->
 	</header>
 	<!-- zone de marge = hauteur du ruban de menu HEAD -->
 	<div style="height:3.5em;"></div>

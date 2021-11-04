@@ -26,20 +26,26 @@
         $sFields4Request=substr($sFields4Request,1);
 ?>
     
-<form class="d-flex flex-column mx-5 pt-3 mb-5" id="form--realisations">
+<form class="form--crud block--tabtype" id="form--realisations" parent_id="btn--tabtype--realisations">
 <!-- <div class="d-flex flex-column mx-5 pt-3"> -->
-    <div class="d-flex flex-row align-items-center w-100 pr-5" id="DivTitleRow">
-        <p class="PMyFormation">
+
+
+    <div class="align-items-center" id="DivTitleRow"><!--  w-100 -->
+        <p class="p--title-form" id="PMyFormation">
             <?php 
                 if($sLang==='fr')
                 {echo"Liste des réalisations :";}
                 else{echo"Works lists :";};
             ?>
         </p>
-        <a href="<?= CO_HTTP_WF3.'create.php?lang='.$sLang;?>" class="btn btn-primary"><?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?></a>
+        <a class="btn btn-primary" href="<?= CO_HTTP_WF3.'create.php?lang='.$sLang;?>">
+        <?php if($sLang==='fr'){echo'Ajouter';}else{echo'Add';}?>
+        </a>
     </div>
+    
+
     <!--  -->
-    <table class="table table-hover table-striped" id="TableProductions" ><!-- style='width:80%;text-align:center;'> -->
+    <table class="table table-hover table-striped" ><!-- id="TableProductions" style='width:80%;text-align:center;'> -->
         <thead class="thead-dark" id="TableHead"><!-- class="thead-dark"> -->
             <tr>
                 <?php
@@ -93,6 +99,7 @@
                         }
                 ?>
                 <td>
+                    <div class='d-flex flex-row flex-nowrap'>
                     <?php
                         if(!in_array('owner',$arFieldNames)
                             or $_SESSION['admin']=='1'
@@ -108,6 +115,7 @@
                     <?php
                         }
                     ?>
+                    </div>
                 </td>
             </tr>
             <?php
